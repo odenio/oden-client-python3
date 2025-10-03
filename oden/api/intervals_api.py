@@ -17,13 +17,13 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from pydantic import StrictStr
 from typing import List
 from oden.models.interval import Interval
 from oden.models.interval_bulk_create import IntervalBulkCreate
 from oden.models.interval_bulk_delete import IntervalBulkDelete
 from oden.models.interval_type import IntervalType
 from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-from oden.models.v2_intervals_set_post200_response import V2IntervalsSetPost200Response
 
 from oden.api_client import ApiClient, RequestSerialized
 from oden.api_response import ApiResponse
@@ -1525,7 +1525,7 @@ class IntervalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V2IntervalsSetPost200Response:
+    ) -> List[str]:
         """v2_intervals_set_post
 
         Create (Does not update) a group of custom intervals, for the same `type` and `line`. Line and type do not need to be included in each individual interval, just once at the top level.  Limitations: - Cannot excees 2500 intervals per request. - Will not write over other intervals - Does not support \"batch\", \"run\", or \"state\" interval types. 
@@ -1563,7 +1563,7 @@ class IntervalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V2IntervalsSetPost200Response",
+            '200': "List[str]",
             '400': "V2LineSearchPost400Response",
             '401': "GenericError",
             '403': "GenericError",
@@ -1599,7 +1599,7 @@ class IntervalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V2IntervalsSetPost200Response]:
+    ) -> ApiResponse[List[str]]:
         """v2_intervals_set_post
 
         Create (Does not update) a group of custom intervals, for the same `type` and `line`. Line and type do not need to be included in each individual interval, just once at the top level.  Limitations: - Cannot excees 2500 intervals per request. - Will not write over other intervals - Does not support \"batch\", \"run\", or \"state\" interval types. 
@@ -1637,7 +1637,7 @@ class IntervalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V2IntervalsSetPost200Response",
+            '200': "List[str]",
             '400': "V2LineSearchPost400Response",
             '401': "GenericError",
             '403': "GenericError",
@@ -1711,7 +1711,7 @@ class IntervalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V2IntervalsSetPost200Response",
+            '200': "List[str]",
             '400': "V2LineSearchPost400Response",
             '401': "GenericError",
             '403': "GenericError",

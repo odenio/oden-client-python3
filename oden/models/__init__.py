@@ -42,7 +42,6 @@ if __import__("typing").TYPE_CHECKING:
     from oden.models.target import Target
     from oden.models.unit import Unit
     from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-    from oden.models.v2_intervals_set_post200_response import V2IntervalsSetPost200Response
     from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response
     from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response
     from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response
@@ -83,7 +82,6 @@ from oden.models.state_reason import StateReason
 from oden.models.target import Target
 from oden.models.unit import Unit
 from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-from oden.models.v2_intervals_set_post200_response import V2IntervalsSetPost200Response
 from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response
 from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response
 from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response

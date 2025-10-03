@@ -39,7 +39,6 @@ docs/Target.md
 docs/TargetsApi.md
 docs/Unit.md
 docs/V2IntervalsDeletePost200Response.md
-docs/V2IntervalsSetPost200Response.md
 docs/V2LineSearchPost400Response.md
 docs/V2LineSearchPost409Response.md
 docs/V2LineSearchPost500Response.md
@@ -90,7 +89,6 @@ oden/models/state_reason.py
 oden/models/target.py
 oden/models/unit.py
 oden/models/v2_intervals_delete_post200_response.py
-oden/models/v2_intervals_set_post200_response.py
 oden/models/v2_line_search_post400_response.py
 oden/models/v2_line_search_post409_response.py
 oden/models/v2_line_search_post500_response.py

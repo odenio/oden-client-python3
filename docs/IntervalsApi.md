@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v2_intervals_set_post**
-> V2IntervalsSetPost200Response v2_intervals_set_post(interval_bulk_create)
+> List[str] v2_intervals_set_post(interval_bulk_create)
 
 Create (Does not update) a group of custom intervals, for the same `type` and `line`.
 Line and type do not need to be included in each individual interval, just once at the top level.
@@ -498,7 +498,6 @@ Limitations:
 ```python
 import oden
 from oden.models.interval_bulk_create import IntervalBulkCreate
-from oden.models.v2_intervals_set_post200_response import V2IntervalsSetPost200Response
 from oden.rest import ApiException
 from pprint import pprint
 
@@ -544,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V2IntervalsSetPost200Response**](V2IntervalsSetPost200Response.md)
+**List[str]**
 
 ### Authorization
 
@@ -559,7 +558,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A list containing any intervals found but not created. |  -  |
+**200** | A list of created interval IDs. |  -  |
 **400** | An error occurred regarding one of the input parameters |  -  |
 **401** | User has provided either no credentials or invalid credentials |  -  |
 **403** | User has provided valid credentials but is not authorized to access the entity  |  -  |

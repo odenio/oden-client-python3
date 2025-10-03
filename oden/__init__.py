@@ -64,7 +64,6 @@ __all__ = [
     "Target",
     "Unit",
     "V2IntervalsDeletePost200Response",
-    "V2IntervalsSetPost200Response",
     "V2LineSearchPost400Response",
     "V2LineSearchPost409Response",
     "V2LineSearchPost500Response",
@@ -124,7 +123,6 @@ if __import__("typing").TYPE_CHECKING:
     from oden.models.target import Target as Target
     from oden.models.unit import Unit as Unit
     from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response as V2IntervalsDeletePost200Response
-    from oden.models.v2_intervals_set_post200_response import V2IntervalsSetPost200Response as V2IntervalsSetPost200Response
     from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response as V2LineSearchPost400Response
     from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response as V2LineSearchPost409Response
     from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response as V2LineSearchPost500Response
@@ -190,7 +188,6 @@ from oden.models.state_reason import StateReason as StateReason
 from oden.models.target import Target as Target
 from oden.models.unit import Unit as Unit
 from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response as V2IntervalsDeletePost200Response
-from oden.models.v2_intervals_set_post200_response import V2IntervalsSetPost200Response as V2IntervalsSetPost200Response
 from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response as V2LineSearchPost400Response
 from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response as V2LineSearchPost409Response
 from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response as V2LineSearchPost500Response

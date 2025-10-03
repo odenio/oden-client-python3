@@ -245,7 +245,6 @@ Class | Method | HTTP request | Description
  - [Target](docs/Target.md)
  - [Unit](docs/Unit.md)
  - [V2IntervalsDeletePost200Response](docs/V2IntervalsDeletePost200Response.md)
- - [V2IntervalsSetPost200Response](docs/V2IntervalsSetPost200Response.md)
  - [V2LineSearchPost400Response](docs/V2LineSearchPost400Response.md)
  - [V2LineSearchPost409Response](docs/V2LineSearchPost409Response.md)
  - [V2LineSearchPost500Response](docs/V2LineSearchPost500Response.md)
