@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v2_interval_set_post**
-> Interval v2_interval_set_post(interval)
+> List[Interval] v2_interval_set_post(interval)
 
 Create or update an Interval.
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Interval**](Interval.md)
+[**List[Interval]**](Interval.md)
 
 ### Authorization
 

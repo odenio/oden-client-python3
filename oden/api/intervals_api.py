@@ -649,7 +649,7 @@ class IntervalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Interval:
+    ) -> List[Interval]:
         """v2_interval_set_post
 
         Create or update an Interval.  Must include `line` and `type`. `match` must be omitted, `unique` or `last`   - If `id` is not supplied, a new Interval will be created.   - If `id` is supplied, existing Interval will be updated. This interval's start time can be modified using `start_time` field.  To update a specific interval supply the `id` of that interval.  If the interval exists with all the same parameters nothing is done.  To update the most recent Interval of a given `type` on a `line` one may use `match: last` and omit `id`  For `RUN` type: if `product` and/or `product_mapping` does not exist a new one will be created. Further a `target` may be set by adding a `target` to the metadata field. The `line` and `product` for this target will be the same as the interval.  Please see examples for more specific information. 
@@ -687,7 +687,7 @@ class IntervalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Interval",
+            '200': "List[Interval]",
             '409': "V2LineSearchPost409Response",
             '401': "GenericError",
             '500': "V2LineSearchPost500Response",
@@ -721,7 +721,7 @@ class IntervalsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Interval]:
+    ) -> ApiResponse[List[Interval]]:
         """v2_interval_set_post
 
         Create or update an Interval.  Must include `line` and `type`. `match` must be omitted, `unique` or `last`   - If `id` is not supplied, a new Interval will be created.   - If `id` is supplied, existing Interval will be updated. This interval's start time can be modified using `start_time` field.  To update a specific interval supply the `id` of that interval.  If the interval exists with all the same parameters nothing is done.  To update the most recent Interval of a given `type` on a `line` one may use `match: last` and omit `id`  For `RUN` type: if `product` and/or `product_mapping` does not exist a new one will be created. Further a `target` may be set by adding a `target` to the metadata field. The `line` and `product` for this target will be the same as the interval.  Please see examples for more specific information. 
@@ -759,7 +759,7 @@ class IntervalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Interval",
+            '200': "List[Interval]",
             '409': "V2LineSearchPost409Response",
             '401': "GenericError",
             '500': "V2LineSearchPost500Response",
@@ -831,7 +831,7 @@ class IntervalsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Interval",
+            '200': "List[Interval]",
             '409': "V2LineSearchPost409Response",
             '401': "GenericError",
             '500': "V2LineSearchPost500Response",
