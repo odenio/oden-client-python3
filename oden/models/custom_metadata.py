@@ -19,28 +19,23 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from oden.models.state_category import StateCategory
-from oden.models.state_reason import StateReason
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StateMetadata(BaseModel):
+class CustomMetadata(BaseModel):
     """
-    Metadata associated with a state interval
+    Metadata associated with a custom interval type
     """ # noqa: E501
     metadata_type: StrictStr
-    reason: Optional[StateReason] = None
-    comment: Optional[StrictStr] = None
-    category: Optional[StateCategory] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["metadata_type", "reason", "comment", "category"]
+    __properties: ClassVar[List[str]] = ["metadata_type"]
 
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['state']):
-            raise ValueError("must be one of enum values ('state')")
+        if value not in set(['custom']):
+            raise ValueError("must be one of enum values ('custom')")
         return value
 
     model_config = ConfigDict(
@@ -61,7 +56,7 @@ class StateMetadata(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StateMetadata from a JSON string"""
+        """Create an instance of CustomMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,12 +79,6 @@ class StateMetadata(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of reason
-        if self.reason:
-            _dict['reason'] = self.reason.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of category
-        if self.category:
-            _dict['category'] = self.category.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -99,7 +88,7 @@ class StateMetadata(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StateMetadata from a dict"""
+        """Create an instance of CustomMetadata from a dict"""
         if obj is None:
             return None
 
@@ -107,10 +96,7 @@ class StateMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "metadata_type": obj.get("metadata_type"),
-            "reason": StateReason.from_dict(obj["reason"]) if obj.get("reason") is not None else None,
-            "comment": obj.get("comment"),
-            "category": StateCategory.from_dict(obj["category"]) if obj.get("category") is not None else None
+            "metadata_type": obj.get("metadata_type")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

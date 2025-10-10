@@ -13,110 +13,41 @@
 """  # noqa: E501
 
 
-from __future__ import annotations
-import pprint
-import re  # noqa: F401
-import json
+import unittest
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from oden.models.state_category import StateCategory
-from oden.models.state_reason import StateReason
-from typing import Optional, Set
-from typing_extensions import Self
+from oden.models.custom_metadata import CustomMetadata
 
-class StateMetadata(BaseModel):
-    """
-    Metadata associated with a state interval
-    """ # noqa: E501
-    metadata_type: StrictStr
-    reason: Optional[StateReason] = None
-    comment: Optional[StrictStr] = None
-    category: Optional[StateCategory] = None
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["metadata_type", "reason", "comment", "category"]
+class TestCustomMetadata(unittest.TestCase):
+    """CustomMetadata unit test stubs"""
 
-    @field_validator('metadata_type')
-    def metadata_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['state']):
-            raise ValueError("must be one of enum values ('state')")
-        return value
+    def setUp(self):
+        pass
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    def tearDown(self):
+        pass
 
-
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
-
-    def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
-
-    @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StateMetadata from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
-
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
+    def make_instance(self, include_optional) -> CustomMetadata:
+        """Test CustomMetadata
+            include_optional is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # uncomment below to create an instance of `CustomMetadata`
         """
-        excluded_fields: Set[str] = set([
-            "additional_properties",
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
+        model = CustomMetadata()
+        if include_optional:
+            return CustomMetadata(
+                metadata_type = 'custom'
+            )
+        else:
+            return CustomMetadata(
+                metadata_type = 'custom',
         )
-        # override the default output from pydantic by calling `to_dict()` of reason
-        if self.reason:
-            _dict['reason'] = self.reason.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of category
-        if self.category:
-            _dict['category'] = self.category.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        """
 
-        return _dict
+    def testCustomMetadata(self):
+        """Test CustomMetadata"""
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
-    @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StateMetadata from a dict"""
-        if obj is None:
-            return None
-
-        if not isinstance(obj, dict):
-            return cls.model_validate(obj)
-
-        _obj = cls.model_validate({
-            "metadata_type": obj.get("metadata_type"),
-            "reason": StateReason.from_dict(obj["reason"]) if obj.get("reason") is not None else None,
-            "comment": obj.get("comment"),
-            "category": StateCategory.from_dict(obj["category"]) if obj.get("category") is not None else None
-        })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
-
-
+if __name__ == '__main__':
+    unittest.main()

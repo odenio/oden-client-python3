@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,17 @@ class BatchMetadata(BaseModel):
     """
     Metadata associated with a batch interval
     """ # noqa: E501
+    metadata_type: StrictStr
     run: Optional[Interval] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["run"]
+    __properties: ClassVar[List[str]] = ["metadata_type", "run"]
+
+    @field_validator('metadata_type')
+    def metadata_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['batch']):
+            raise ValueError("must be one of enum values ('batch')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,6 +100,7 @@ class BatchMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "metadata_type": obj.get("metadata_type"),
             "run": Interval.from_dict(obj["run"]) if obj.get("run") is not None else None
         })
         # store additional fields in additional_properties

@@ -6,6 +6,7 @@ Metadata associated with a batch interval
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**metadata_type** | **str** |  | 
 **run** | [**Interval**](Interval.md) |  | [optional] 
 
 ## Example

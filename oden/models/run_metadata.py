@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from oden.models.product import Product
 from oden.models.target import Target
@@ -29,10 +29,18 @@ class RunMetadata(BaseModel):
     """
     Metadata associated with a run interval
     """ # noqa: E501
+    metadata_type: StrictStr
     product: Optional[Product] = None
     target: Optional[Target] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["product", "target"]
+    __properties: ClassVar[List[str]] = ["metadata_type", "product", "target"]
+
+    @field_validator('metadata_type')
+    def metadata_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['run']):
+            raise ValueError("must be one of enum values ('run')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +106,7 @@ class RunMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "metadata_type": obj.get("metadata_type"),
             "product": Product.from_dict(obj["product"]) if obj.get("product") is not None else None,
             "target": Target.from_dict(obj["target"]) if obj.get("target") is not None else None
         })

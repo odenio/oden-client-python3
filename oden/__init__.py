@@ -39,6 +39,7 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "BatchMetadata",
+    "CustomMetadata",
     "Factory",
     "GenericError",
     "Interval",
@@ -98,6 +99,7 @@ if __import__("typing").TYPE_CHECKING:
     
     # import models into sdk package
     from oden.models.batch_metadata import BatchMetadata as BatchMetadata
+    from oden.models.custom_metadata import CustomMetadata as CustomMetadata
     from oden.models.factory import Factory as Factory
     from oden.models.generic_error import GenericError as GenericError
     from oden.models.interval import Interval as Interval
@@ -163,6 +165,7 @@ from oden.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from oden.models.batch_metadata import BatchMetadata as BatchMetadata
+from oden.models.custom_metadata import CustomMetadata as CustomMetadata
 from oden.models.factory import Factory as Factory
 from oden.models.generic_error import GenericError as GenericError
 from oden.models.interval import Interval as Interval

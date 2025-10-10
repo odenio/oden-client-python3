@@ -17,6 +17,7 @@
 if __import__("typing").TYPE_CHECKING:
     # import models into model package
     from oden.models.batch_metadata import BatchMetadata
+    from oden.models.custom_metadata import CustomMetadata
     from oden.models.factory import Factory
     from oden.models.generic_error import GenericError
     from oden.models.interval import Interval
@@ -57,6 +58,7 @@ else:
             *as_package(__file__),
             """# import models into model package
 from oden.models.batch_metadata import BatchMetadata
+from oden.models.custom_metadata import CustomMetadata
 from oden.models.factory import Factory
 from oden.models.generic_error import GenericError
 from oden.models.interval import Interval

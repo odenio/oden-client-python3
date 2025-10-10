@@ -4,6 +4,7 @@
 .travis.yml
 README.md
 docs/BatchMetadata.md
+docs/CustomMetadata.md
 docs/Factory.md
 docs/GenericError.md
 docs/Interval.md
@@ -64,6 +65,7 @@ oden/configuration.py
 oden/exceptions.py
 oden/models/__init__.py
 oden/models/batch_metadata.py
+oden/models/custom_metadata.py
 oden/models/factory.py
 oden/models/generic_error.py
 oden/models/interval.py
@@ -103,4 +105,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_custom_metadata.py
 tox.ini
