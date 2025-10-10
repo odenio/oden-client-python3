@@ -27,7 +27,7 @@ class BatchMetadata(BaseModel):
     """
     Metadata associated with a batch interval
     """ # noqa: E501
-    metadata_type: StrictStr
+    metadata_type: Optional[StrictStr] = None
     run: Optional[Interval] = None
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["metadata_type", "run"]
@@ -35,6 +35,9 @@ class BatchMetadata(BaseModel):
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in set(['batch']):
             raise ValueError("must be one of enum values ('batch')")
         return value
@@ -69,9 +72,11 @@ class BatchMetadata(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "metadata_type",
             "additional_properties",
         ])
 

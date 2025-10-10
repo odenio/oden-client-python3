@@ -29,7 +29,7 @@ class RunMetadata(BaseModel):
     """
     Metadata associated with a run interval
     """ # noqa: E501
-    metadata_type: StrictStr
+    metadata_type: Optional[StrictStr] = None
     product: Optional[Product] = None
     target: Optional[Target] = None
     additional_properties: Dict[str, Any] = {}
@@ -38,6 +38,9 @@ class RunMetadata(BaseModel):
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in set(['run']):
             raise ValueError("must be one of enum values ('run')")
         return value
@@ -72,9 +75,11 @@ class RunMetadata(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "metadata_type",
             "additional_properties",
         ])
 

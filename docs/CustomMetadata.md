@@ -6,7 +6,7 @@ Metadata associated with a custom interval type
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata_type** | **str** |  | 
+**metadata_type** | **str** |  | [optional] [readonly] 
 
 ## Example
 
