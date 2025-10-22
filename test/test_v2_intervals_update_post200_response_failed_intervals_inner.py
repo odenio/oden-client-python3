@@ -1,6 +1,5 @@
 # coding: utf-8
 
-# flake8: noqa
 """
     Oden API
 
@@ -14,91 +13,41 @@
 """  # noqa: E501
 
 
-if __import__("typing").TYPE_CHECKING:
-    # import models into model package
-    from oden.models.batch_metadata import BatchMetadata
-    from oden.models.custom_metadata import CustomMetadata
-    from oden.models.factory import Factory
-    from oden.models.generic_error import GenericError
-    from oden.models.interval import Interval
-    from oden.models.interval_bulk_create import IntervalBulkCreate
-    from oden.models.interval_bulk_delete import IntervalBulkDelete
-    from oden.models.interval_bulk_update import IntervalBulkUpdate
-    from oden.models.interval_metadata import IntervalMetadata
-    from oden.models.interval_type import IntervalType
-    from oden.models.line import Line
-    from oden.models.match import Match
-    from oden.models.metric_group import MetricGroup
-    from oden.models.oql_query import OQLQuery
-    from oden.models.product import Product
-    from oden.models.product_attribute import ProductAttribute
-    from oden.models.product_mapping import ProductMapping
-    from oden.models.quality_schema import QualitySchema
-    from oden.models.quality_test import QualityTest
-    from oden.models.run_metadata import RunMetadata
-    from oden.models.scrap_yield_data import ScrapYieldData
-    from oden.models.scrap_yield_schema import ScrapYieldSchema
-    from oden.models.state_category import StateCategory
-    from oden.models.state_metadata import StateMetadata
-    from oden.models.state_reason import StateReason
-    from oden.models.target import Target
-    from oden.models.unit import Unit
-    from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-    from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response
-    from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner
-    from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response
-    from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response
-    from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response
-    from oden.models.v2_quality_tests_delete_post_request import V2QualityTestsDeletePostRequest
-    from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
-    from oden.models.v2_scrap_yield_set_post_request import V2ScrapYieldSetPostRequest
-    
-else:
-    from lazy_imports import LazyModule, as_package, load
+import unittest
 
-    load(
-        LazyModule(
-            *as_package(__file__),
-            """# import models into model package
-from oden.models.batch_metadata import BatchMetadata
-from oden.models.custom_metadata import CustomMetadata
-from oden.models.factory import Factory
-from oden.models.generic_error import GenericError
-from oden.models.interval import Interval
-from oden.models.interval_bulk_create import IntervalBulkCreate
-from oden.models.interval_bulk_delete import IntervalBulkDelete
-from oden.models.interval_bulk_update import IntervalBulkUpdate
-from oden.models.interval_metadata import IntervalMetadata
-from oden.models.interval_type import IntervalType
-from oden.models.line import Line
-from oden.models.match import Match
-from oden.models.metric_group import MetricGroup
-from oden.models.oql_query import OQLQuery
-from oden.models.product import Product
-from oden.models.product_attribute import ProductAttribute
-from oden.models.product_mapping import ProductMapping
-from oden.models.quality_schema import QualitySchema
-from oden.models.quality_test import QualityTest
-from oden.models.run_metadata import RunMetadata
-from oden.models.scrap_yield_data import ScrapYieldData
-from oden.models.scrap_yield_schema import ScrapYieldSchema
-from oden.models.state_category import StateCategory
-from oden.models.state_metadata import StateMetadata
-from oden.models.state_reason import StateReason
-from oden.models.target import Target
-from oden.models.unit import Unit
-from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response
 from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner
-from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response
-from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response
-from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response
-from oden.models.v2_quality_tests_delete_post_request import V2QualityTestsDeletePostRequest
-from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
-from oden.models.v2_scrap_yield_set_post_request import V2ScrapYieldSetPostRequest
 
-""",
-            name=__name__,
-            doc=__doc__,
+class TestV2IntervalsUpdatePost200ResponseFailedIntervalsInner(unittest.TestCase):
+    """V2IntervalsUpdatePost200ResponseFailedIntervalsInner unit test stubs"""
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def make_instance(self, include_optional) -> V2IntervalsUpdatePost200ResponseFailedIntervalsInner:
+        """Test V2IntervalsUpdatePost200ResponseFailedIntervalsInner
+            include_optional is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # uncomment below to create an instance of `V2IntervalsUpdatePost200ResponseFailedIntervalsInner`
+        """
+        model = V2IntervalsUpdatePost200ResponseFailedIntervalsInner()
+        if include_optional:
+            return V2IntervalsUpdatePost200ResponseFailedIntervalsInner(
+                id = '',
+                error = ''
+            )
+        else:
+            return V2IntervalsUpdatePost200ResponseFailedIntervalsInner(
         )
-    )
+        """
+
+    def testV2IntervalsUpdatePost200ResponseFailedIntervalsInner(self):
+        """Test V2IntervalsUpdatePost200ResponseFailedIntervalsInner"""
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
+
+if __name__ == '__main__':
+    unittest.main()

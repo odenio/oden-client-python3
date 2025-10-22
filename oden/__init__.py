@@ -45,6 +45,7 @@ __all__ = [
     "Interval",
     "IntervalBulkCreate",
     "IntervalBulkDelete",
+    "IntervalBulkUpdate",
     "IntervalMetadata",
     "IntervalType",
     "Line",
@@ -65,6 +66,8 @@ __all__ = [
     "Target",
     "Unit",
     "V2IntervalsDeletePost200Response",
+    "V2IntervalsUpdatePost200Response",
+    "V2IntervalsUpdatePost200ResponseFailedIntervalsInner",
     "V2LineSearchPost400Response",
     "V2LineSearchPost409Response",
     "V2LineSearchPost500Response",
@@ -105,6 +108,7 @@ if __import__("typing").TYPE_CHECKING:
     from oden.models.interval import Interval as Interval
     from oden.models.interval_bulk_create import IntervalBulkCreate as IntervalBulkCreate
     from oden.models.interval_bulk_delete import IntervalBulkDelete as IntervalBulkDelete
+    from oden.models.interval_bulk_update import IntervalBulkUpdate as IntervalBulkUpdate
     from oden.models.interval_metadata import IntervalMetadata as IntervalMetadata
     from oden.models.interval_type import IntervalType as IntervalType
     from oden.models.line import Line as Line
@@ -125,6 +129,8 @@ if __import__("typing").TYPE_CHECKING:
     from oden.models.target import Target as Target
     from oden.models.unit import Unit as Unit
     from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response as V2IntervalsDeletePost200Response
+    from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response as V2IntervalsUpdatePost200Response
+    from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner as V2IntervalsUpdatePost200ResponseFailedIntervalsInner
     from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response as V2LineSearchPost400Response
     from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response as V2LineSearchPost409Response
     from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response as V2LineSearchPost500Response
@@ -171,6 +177,7 @@ from oden.models.generic_error import GenericError as GenericError
 from oden.models.interval import Interval as Interval
 from oden.models.interval_bulk_create import IntervalBulkCreate as IntervalBulkCreate
 from oden.models.interval_bulk_delete import IntervalBulkDelete as IntervalBulkDelete
+from oden.models.interval_bulk_update import IntervalBulkUpdate as IntervalBulkUpdate
 from oden.models.interval_metadata import IntervalMetadata as IntervalMetadata
 from oden.models.interval_type import IntervalType as IntervalType
 from oden.models.line import Line as Line
@@ -191,6 +198,8 @@ from oden.models.state_reason import StateReason as StateReason
 from oden.models.target import Target as Target
 from oden.models.unit import Unit as Unit
 from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response as V2IntervalsDeletePost200Response
+from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response as V2IntervalsUpdatePost200Response
+from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner as V2IntervalsUpdatePost200ResponseFailedIntervalsInner
 from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response as V2LineSearchPost400Response
 from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response as V2LineSearchPost409Response
 from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response as V2LineSearchPost500Response

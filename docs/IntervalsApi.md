@@ -8,8 +8,10 @@ Method | HTTP request | Description
 [**v2_interval_search_post**](IntervalsApi.md#v2_interval_search_post) | **POST** /v2/interval/search | 
 [**v2_interval_set_post**](IntervalsApi.md#v2_interval_set_post) | **POST** /v2/interval/set | 
 [**v2_interval_type_search_post**](IntervalsApi.md#v2_interval_type_search_post) | **POST** /v2/interval_type/search | 
+[**v2_interval_update_post**](IntervalsApi.md#v2_interval_update_post) | **POST** /v2/interval/update | 
 [**v2_intervals_delete_post**](IntervalsApi.md#v2_intervals_delete_post) | **POST** /v2/intervals/delete | 
 [**v2_intervals_set_post**](IntervalsApi.md#v2_intervals_set_post) | **POST** /v2/intervals/set | 
+[**v2_intervals_update_post**](IntervalsApi.md#v2_intervals_update_post) | **POST** /v2/intervals/update | 
 
 
 # **v2_interval_delete_post**
@@ -390,6 +392,104 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v2_interval_update_post**
+> List[Interval] v2_interval_update_post(interval)
+
+Update an existing Interval. This endpoint only updates intervals and will not create new ones.
+
+Must include `line`, `type`, and `id`. The `id` must reference an existing interval.
+
+This interval's properties can be modified using the following fields:
+- `name`: Update the interval name
+- `start_time`: Modify the start time
+- `end_time`: Modify the end time
+- `metadata`: Update metadata (product, target, category, reason, etc.)
+
+If the interval does not exist, a 404 error will be returned.
+
+**Note:** The `id` must be obtained from either:
+- The response when creating an interval via `/v2/interval/set`
+- Searching for intervals via `/v2/interval/search`
+
+
+### Example
+
+* Api Key Authentication (APIKeyAuth):
+
+```python
+import oden
+from oden.models.interval import Interval
+from oden.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.oden.app
+# See configuration.py for a list of all supported configuration parameters.
+configuration = oden.Configuration(
+    host = "https://api.oden.app"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKeyAuth
+configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with oden.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = oden.IntervalsApi(api_client)
+    interval = {"id":"178b9a1ec20","type":{"name":"RUN"},"line":{"id":"2fc8b5e5-fb88-48a7-9c35-4a763206608c"},"metadata":{"product":{"name":"Updated Product"}}} # Interval | 
+
+    try:
+        api_response = api_instance.v2_interval_update_post(interval)
+        print("The response of IntervalsApi->v2_interval_update_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntervalsApi->v2_interval_update_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **interval** | [**Interval**](Interval.md)|  | 
+
+### Return type
+
+[**List[Interval]**](Interval.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated interval. |  -  |
+**400** | An error occurred regarding one of the input parameters |  -  |
+**401** | User has provided either no credentials or invalid credentials |  -  |
+**403** | User has provided valid credentials but is not authorized to access the entity  |  -  |
+**404** | Entity not found |  -  |
+**409** | A {match: \&quot;unique\&quot;} was requested, but multiple entities matched the search parameters.  |  -  |
+**500** | An internal server error has occurred. If reporting the error to Oden, include the ID returned in this response to aid in debugging.  |  -  |
+**501** | Endpoint is not yet implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v2_intervals_delete_post**
 > V2IntervalsDeletePost200Response v2_intervals_delete_post(interval_bulk_delete)
 
@@ -563,6 +663,110 @@ Name | Type | Description  | Notes
 **401** | User has provided either no credentials or invalid credentials |  -  |
 **403** | User has provided valid credentials but is not authorized to access the entity  |  -  |
 **404** | Entity not found |  -  |
+**409** | A {match: \&quot;unique\&quot;} was requested, but multiple entities matched the search parameters.  |  -  |
+**500** | An internal server error has occurred. If reporting the error to Oden, include the ID returned in this response to aid in debugging.  |  -  |
+**501** | Endpoint is not yet implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v2_intervals_update_post**
+> V2IntervalsUpdatePost200Response v2_intervals_update_post(interval_bulk_update)
+
+Update multiple existing intervals. This endpoint only updates intervals and will not create new ones.
+
+Each interval in the `intervals` array must include an `id` that references an existing interval.
+
+Updatable fields for each interval:
+- `name`: Update the interval name
+- `start_time`: Modify the start time
+- `end_time`: Modify the end time
+- `metadata`: Update metadata (product, target, category, reason, etc.)
+
+The endpoint will attempt to update all intervals and return information about successes and failures:
+- Successfully updated intervals are returned in the response
+- Failed intervals are listed with their IDs and error reasons
+
+Limitations:
+- Cannot exceed 2500 intervals per request
+- All intervals must be of the same `type` and on the same `line`
+
+**Note:** Interval IDs must be obtained from either:
+- The response when creating intervals via `/v2/interval/set` or `/v2/intervals/set`
+- Searching for intervals via `/v2/interval/search`
+
+
+### Example
+
+* Api Key Authentication (APIKeyAuth):
+
+```python
+import oden
+from oden.models.interval_bulk_update import IntervalBulkUpdate
+from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response
+from oden.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.oden.app
+# See configuration.py for a list of all supported configuration parameters.
+configuration = oden.Configuration(
+    host = "https://api.oden.app"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKeyAuth
+configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with oden.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = oden.IntervalsApi(api_client)
+    interval_bulk_update = {"type":{"name":"operator id"},"line":{"id":"2fc8b5e5-fb88-48a7-9c35-4a763206608c"},"intervals":[{"id":"1809d88adf0","name":"updated_operator_1","start_time":"2021-04-04T08:00:04Z","end_time":"2021-04-04T08:30:04Z"},{"id":"1809d88adf1","name":"updated_operator_2","start_time":"2021-04-04T09:00:04Z","end_time":"2021-04-04T09:30:04Z"}]} # IntervalBulkUpdate | 
+
+    try:
+        api_response = api_instance.v2_intervals_update_post(interval_bulk_update)
+        print("The response of IntervalsApi->v2_intervals_update_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntervalsApi->v2_intervals_update_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **interval_bulk_update** | [**IntervalBulkUpdate**](IntervalBulkUpdate.md)|  | 
+
+### Return type
+
+[**V2IntervalsUpdatePost200Response**](V2IntervalsUpdatePost200Response.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Response containing successfully updated intervals and any failures that occurred. |  -  |
+**400** | An error occurred regarding one of the input parameters |  -  |
+**401** | User has provided either no credentials or invalid credentials |  -  |
+**403** | User has provided valid credentials but is not authorized to access the entity  |  -  |
 **409** | A {match: \&quot;unique\&quot;} was requested, but multiple entities matched the search parameters.  |  -  |
 **500** | An internal server error has occurred. If reporting the error to Oden, include the ID returned in this response to aid in debugging.  |  -  |
 **501** | Endpoint is not yet implemented |  -  |

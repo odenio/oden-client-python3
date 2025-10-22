@@ -1,6 +1,5 @@
 # coding: utf-8
 
-# flake8: noqa
 """
     Oden API
 
@@ -14,91 +13,96 @@
 """  # noqa: E501
 
 
-if __import__("typing").TYPE_CHECKING:
-    # import models into model package
-    from oden.models.batch_metadata import BatchMetadata
-    from oden.models.custom_metadata import CustomMetadata
-    from oden.models.factory import Factory
-    from oden.models.generic_error import GenericError
-    from oden.models.interval import Interval
-    from oden.models.interval_bulk_create import IntervalBulkCreate
-    from oden.models.interval_bulk_delete import IntervalBulkDelete
-    from oden.models.interval_bulk_update import IntervalBulkUpdate
-    from oden.models.interval_metadata import IntervalMetadata
-    from oden.models.interval_type import IntervalType
-    from oden.models.line import Line
-    from oden.models.match import Match
-    from oden.models.metric_group import MetricGroup
-    from oden.models.oql_query import OQLQuery
-    from oden.models.product import Product
-    from oden.models.product_attribute import ProductAttribute
-    from oden.models.product_mapping import ProductMapping
-    from oden.models.quality_schema import QualitySchema
-    from oden.models.quality_test import QualityTest
-    from oden.models.run_metadata import RunMetadata
-    from oden.models.scrap_yield_data import ScrapYieldData
-    from oden.models.scrap_yield_schema import ScrapYieldSchema
-    from oden.models.state_category import StateCategory
-    from oden.models.state_metadata import StateMetadata
-    from oden.models.state_reason import StateReason
-    from oden.models.target import Target
-    from oden.models.unit import Unit
-    from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-    from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response
-    from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner
-    from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response
-    from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response
-    from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response
-    from oden.models.v2_quality_tests_delete_post_request import V2QualityTestsDeletePostRequest
-    from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
-    from oden.models.v2_scrap_yield_set_post_request import V2ScrapYieldSetPostRequest
-    
-else:
-    from lazy_imports import LazyModule, as_package, load
+from __future__ import annotations
+import pprint
+import re  # noqa: F401
+import json
 
-    load(
-        LazyModule(
-            *as_package(__file__),
-            """# import models into model package
-from oden.models.batch_metadata import BatchMetadata
-from oden.models.custom_metadata import CustomMetadata
-from oden.models.factory import Factory
-from oden.models.generic_error import GenericError
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List, Optional
 from oden.models.interval import Interval
-from oden.models.interval_bulk_create import IntervalBulkCreate
-from oden.models.interval_bulk_delete import IntervalBulkDelete
-from oden.models.interval_bulk_update import IntervalBulkUpdate
-from oden.models.interval_metadata import IntervalMetadata
 from oden.models.interval_type import IntervalType
 from oden.models.line import Line
-from oden.models.match import Match
-from oden.models.metric_group import MetricGroup
-from oden.models.oql_query import OQLQuery
-from oden.models.product import Product
-from oden.models.product_attribute import ProductAttribute
-from oden.models.product_mapping import ProductMapping
-from oden.models.quality_schema import QualitySchema
-from oden.models.quality_test import QualityTest
-from oden.models.run_metadata import RunMetadata
-from oden.models.scrap_yield_data import ScrapYieldData
-from oden.models.scrap_yield_schema import ScrapYieldSchema
-from oden.models.state_category import StateCategory
-from oden.models.state_metadata import StateMetadata
-from oden.models.state_reason import StateReason
-from oden.models.target import Target
-from oden.models.unit import Unit
-from oden.models.v2_intervals_delete_post200_response import V2IntervalsDeletePost200Response
-from oden.models.v2_intervals_update_post200_response import V2IntervalsUpdatePost200Response
-from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner
-from oden.models.v2_line_search_post400_response import V2LineSearchPost400Response
-from oden.models.v2_line_search_post409_response import V2LineSearchPost409Response
-from oden.models.v2_line_search_post500_response import V2LineSearchPost500Response
-from oden.models.v2_quality_tests_delete_post_request import V2QualityTestsDeletePostRequest
-from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
-from oden.models.v2_scrap_yield_set_post_request import V2ScrapYieldSetPostRequest
+from typing import Optional, Set
+from typing_extensions import Self
 
-""",
-            name=__name__,
-            doc=__doc__,
-        )
+class IntervalBulkUpdate(BaseModel):
+    """
+    A set of intervals to update
+    """ # noqa: E501
+    type: Optional[IntervalType] = None
+    line: Optional[Line] = None
+    intervals: Optional[List[Interval]] = None
+    __properties: ClassVar[List[str]] = ["type", "line", "intervals"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
     )
+
+
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
+
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of IntervalBulkUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of line
+        if self.line:
+            _dict['line'] = self.line.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in intervals (list)
+        _items = []
+        if self.intervals:
+            for _item_intervals in self.intervals:
+                if _item_intervals:
+                    _items.append(_item_intervals.to_dict())
+            _dict['intervals'] = _items
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of IntervalBulkUpdate from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "type": IntervalType.from_dict(obj["type"]) if obj.get("type") is not None else None,
+            "line": Line.from_dict(obj["line"]) if obj.get("line") is not None else None,
+            "intervals": [Interval.from_dict(_item) for _item in obj["intervals"]] if obj.get("intervals") is not None else None
+        })
+        return _obj
+
+

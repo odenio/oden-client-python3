@@ -10,6 +10,7 @@ docs/GenericError.md
 docs/Interval.md
 docs/IntervalBulkCreate.md
 docs/IntervalBulkDelete.md
+docs/IntervalBulkUpdate.md
 docs/IntervalMetadata.md
 docs/IntervalType.md
 docs/IntervalsApi.md
@@ -40,6 +41,8 @@ docs/Target.md
 docs/TargetsApi.md
 docs/Unit.md
 docs/V2IntervalsDeletePost200Response.md
+docs/V2IntervalsUpdatePost200Response.md
+docs/V2IntervalsUpdatePost200ResponseFailedIntervalsInner.md
 docs/V2LineSearchPost400Response.md
 docs/V2LineSearchPost409Response.md
 docs/V2LineSearchPost500Response.md
@@ -71,6 +74,7 @@ oden/models/generic_error.py
 oden/models/interval.py
 oden/models/interval_bulk_create.py
 oden/models/interval_bulk_delete.py
+oden/models/interval_bulk_update.py
 oden/models/interval_metadata.py
 oden/models/interval_type.py
 oden/models/line.py
@@ -91,6 +95,8 @@ oden/models/state_reason.py
 oden/models/target.py
 oden/models/unit.py
 oden/models/v2_intervals_delete_post200_response.py
+oden/models/v2_intervals_update_post200_response.py
+oden/models/v2_intervals_update_post200_response_failed_intervals_inner.py
 oden/models/v2_line_search_post400_response.py
 oden/models/v2_line_search_post409_response.py
 oden/models/v2_line_search_post500_response.py
@@ -105,4 +111,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_interval_bulk_update.py
+test/test_v2_intervals_update_post200_response.py
+test/test_v2_intervals_update_post200_response_failed_intervals_inner.py
 tox.ini
