@@ -111,7 +111,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_interval_bulk_update.py
-test/test_v2_intervals_update_post200_response.py
-test/test_v2_intervals_update_post200_response_failed_intervals_inner.py
 tox.ini
