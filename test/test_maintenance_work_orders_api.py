@@ -13,78 +13,38 @@
 """  # noqa: E501
 
 
-from __future__ import annotations
-import pprint
-import re  # noqa: F401
-import json
+import unittest
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
-
-class V2IntervalsUpdatePost200ResponseFailedIntervalsInner(BaseModel):
-    """
-    V2IntervalsUpdatePost200ResponseFailedIntervalsInner
-    """ # noqa: E501
-    id: Optional[StrictStr] = None
-    error: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "error"]
-
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+from oden.api.maintenance_work_orders_api import MaintenanceWorkOrdersApi
 
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+class TestMaintenanceWorkOrdersApi(unittest.TestCase):
+    """MaintenanceWorkOrdersApi unit test stubs"""
 
-    def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+    def setUp(self) -> None:
+        self.api = MaintenanceWorkOrdersApi()
 
-    @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200ResponseFailedIntervalsInner from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
+    def tearDown(self) -> None:
+        pass
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
+    def test_v2_maintenance_work_order_delete_post(self) -> None:
+        """Test case for v2_maintenance_work_order_delete_post
 
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
         """
-        excluded_fields: Set[str] = set([
-        ])
+        pass
 
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
-        return _dict
+    def test_v2_maintenance_work_order_search_post(self) -> None:
+        """Test case for v2_maintenance_work_order_search_post
 
-    @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200ResponseFailedIntervalsInner from a dict"""
-        if obj is None:
-            return None
+        """
+        pass
 
-        if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+    def test_v2_maintenance_work_order_set_post(self) -> None:
+        """Test case for v2_maintenance_work_order_set_post
 
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "error": obj.get("error")
-        })
-        return _obj
+        """
+        pass
 
 
+if __name__ == '__main__':
+    unittest.main()

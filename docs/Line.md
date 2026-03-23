@@ -6,7 +6,7 @@ An entity representing a single line of production.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **name** | **str** |  | [optional] 
 **secondary_name** | **str** |  | [optional] 
 **factory** | [**Factory**](Factory.md) |  | [optional] 

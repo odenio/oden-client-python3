@@ -6,7 +6,7 @@ Scrap yield schema represents a factory's scrap/yield data ingestion configurati
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **factory** | [**Factory**](Factory.md) |  | [optional] 
 **scrap_conversion_factor** | **float** |  | [optional] 
 **scrap_unit** | [**Unit**](Unit.md) |  | [optional] 

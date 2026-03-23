@@ -13,78 +13,55 @@
 """  # noqa: E501
 
 
-from __future__ import annotations
-import pprint
-import re  # noqa: F401
-import json
+import unittest
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set
-from typing_extensions import Self
+from oden.models.v2_maintenance_work_order_search_post_request import V2MaintenanceWorkOrderSearchPostRequest
 
-class V2IntervalsUpdatePost200ResponseFailedIntervalsInner(BaseModel):
-    """
-    V2IntervalsUpdatePost200ResponseFailedIntervalsInner
-    """ # noqa: E501
-    id: Optional[StrictStr] = None
-    error: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "error"]
+class TestV2MaintenanceWorkOrderSearchPostRequest(unittest.TestCase):
+    """V2MaintenanceWorkOrderSearchPostRequest unit test stubs"""
 
-    model_config = ConfigDict(
-        populate_by_name=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    def setUp(self):
+        pass
 
+    def tearDown(self):
+        pass
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
-
-    def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
-
-    @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200ResponseFailedIntervalsInner from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
-
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
+    def make_instance(self, include_optional) -> V2MaintenanceWorkOrderSearchPostRequest:
+        """Test V2MaintenanceWorkOrderSearchPostRequest
+            include_optional is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # uncomment below to create an instance of `V2MaintenanceWorkOrderSearchPostRequest`
         """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
+        model = V2MaintenanceWorkOrderSearchPostRequest()
+        if include_optional:
+            return V2MaintenanceWorkOrderSearchPostRequest(
+                id = '',
+                external_id = '',
+                line = oden.models.line.Line(
+                    id = '', 
+                    name = '', 
+                    secondary_name = '', 
+                    factory = oden.models.factory.Factory(
+                        id = '', 
+                        name = '', 
+                        secondary_name = '', 
+                        timezone = '', 
+                        match = 'unique', ), 
+                    match = 'unique', ),
+                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                end_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                match = 'unique'
+            )
+        else:
+            return V2MaintenanceWorkOrderSearchPostRequest(
         )
-        return _dict
+        """
 
-    @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200ResponseFailedIntervalsInner from a dict"""
-        if obj is None:
-            return None
+    def testV2MaintenanceWorkOrderSearchPostRequest(self):
+        """Test V2MaintenanceWorkOrderSearchPostRequest"""
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
-        if not isinstance(obj, dict):
-            return cls.model_validate(obj)
-
-        _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "error": obj.get("error")
-        })
-        return _obj
-
-
+if __name__ == '__main__':
+    unittest.main()

@@ -6,7 +6,7 @@ An entity representing a product
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **name** | **str** |  | [optional] 
 **match** | [**Match**](Match.md) |  | [optional] [default to Match.UNIQUE]
 

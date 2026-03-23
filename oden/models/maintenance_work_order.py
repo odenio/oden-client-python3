@@ -18,18 +18,29 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
+from oden.models.line import Line
+from oden.models.match import Match
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V2IntervalsUpdatePost200ResponseFailedIntervalsInner(BaseModel):
+class MaintenanceWorkOrder(BaseModel):
     """
-    V2IntervalsUpdatePost200ResponseFailedIntervalsInner
+    An object representing a maintenance work order on a line.
     """ # noqa: E501
-    id: Optional[StrictStr] = None
-    error: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "error"]
+    id: Optional[UUID] = None
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    external_id: Optional[StrictStr] = None
+    line: Optional[Line] = None
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    metadata: Optional[Dict[str, Any]] = None
+    match: Optional[Match] = Match.UNIQUE
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "external_id", "line", "started_at", "completed_at", "metadata", "match"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +60,7 @@ class V2IntervalsUpdatePost200ResponseFailedIntervalsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200ResponseFailedIntervalsInner from a JSON string"""
+        """Create an instance of MaintenanceWorkOrder from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,11 +81,14 @@ class V2IntervalsUpdatePost200ResponseFailedIntervalsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of line
+        if self.line:
+            _dict['line'] = self.line.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200ResponseFailedIntervalsInner from a dict"""
+        """Create an instance of MaintenanceWorkOrder from a dict"""
         if obj is None:
             return None
 
@@ -83,7 +97,14 @@ class V2IntervalsUpdatePost200ResponseFailedIntervalsInner(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "error": obj.get("error")
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "external_id": obj.get("external_id"),
+            "line": Line.from_dict(obj["line"]) if obj.get("line") is not None else None,
+            "started_at": obj.get("started_at"),
+            "completed_at": obj.get("completed_at"),
+            "metadata": obj.get("metadata"),
+            "match": obj.get("match") if obj.get("match") is not None else Match.UNIQUE
         })
         return _obj
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **unit_kind_of_quantity** | **str** |  | [optional] 
 **match** | [**Match**](Match.md) |  | [optional] [default to Match.UNIQUE]
 

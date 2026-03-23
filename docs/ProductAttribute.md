@@ -6,7 +6,7 @@ An entity representing an attribute of a product such as a color or material
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **name** | **str** |  | [optional] 
 **display_name** | **str** |  | [optional] 
 **value** | **str** |  | [optional] 

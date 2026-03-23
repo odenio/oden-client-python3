@@ -6,8 +6,7 @@ An object representing a interval type.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**factory** | [**Factory**](Factory.md) |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **name** | **str** |  | [optional] 
 **match** | [**Match**](Match.md) |  | [optional] [default to Match.UNIQUE]
 

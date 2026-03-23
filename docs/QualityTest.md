@@ -6,7 +6,7 @@ An object representing a QA test for a line for a particular run or batch interv
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **raw_data** | **object** |  | [optional] 
 **timestamp** | **datetime** |  | [optional] 
 **interval** | [**Interval**](Interval.md) |  | [optional] 

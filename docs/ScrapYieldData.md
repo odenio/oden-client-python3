@@ -7,7 +7,7 @@ An object representing scrap and yield data for a line for a particular run or b
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **raw_data** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **var_schema** | [**ScrapYieldSchema**](ScrapYieldSchema.md) |  | [optional] 
 **timestamp** | **datetime** |  | [optional] 
 **match** | [**Match**](Match.md) |  | [optional] [default to Match.UNIQUE]

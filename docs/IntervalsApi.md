@@ -310,9 +310,9 @@ Name | Type | Description  | Notes
 # **v2_interval_type_search_post**
 > List[IntervalType] v2_interval_type_search_post(interval_type)
 
-Search for Interval Types by `name`, `id`, `factory` or just `match: all` to return all Interval Types associated with the your organization.
-Basic Interval Types -- `RUN`, `BATCH`, and `STATE` -- are associated with every factory in Oden's system.
-Custom Interval Types may be created by users, are set on a per factory basis, and may only describe Intervals on Lines associated with that Factory.
+Search for Interval Types by `name`, `id`, or just `match: all` to return all Interval Types associated with the your organization.
+Basic Interval Types -- `RUN`, `BATCH`, and `STATE` -- are dedicated interval types that come out-of-the-box with Oden.
+Custom Interval Types may be created by users.
 
 
 ### Example

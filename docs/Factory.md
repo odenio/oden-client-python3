@@ -6,7 +6,7 @@ An entity representing a factory.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
+**id** | **UUID** |  | [optional] 
 **name** | **str** |  | [optional] 
 **secondary_name** | **str** |  | [optional] 
 **timezone** | **str** |  | [optional] 

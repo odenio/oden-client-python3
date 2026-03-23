@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ids** | **List[str]** |  | [optional] 
+**ids** | **List[UUID]** |  | [optional] 
 **line** | [**Line**](Line.md) |  | [optional] 
 **start_time** | **datetime** |  | [optional] 
 **end_time** | **datetime** |  | [optional] 

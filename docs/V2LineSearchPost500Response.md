@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **error** | **str** |  | 
 **retryable** | **bool** |  | 
-**id** | **str** |  | 
+**id** | **UUID** |  | 
 
 ## Example
 
