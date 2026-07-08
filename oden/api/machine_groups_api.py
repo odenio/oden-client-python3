@@ -39,7 +39,7 @@ class MachineGroupsApi:
 
 
     @validate_call
-    def v2_factory_search_post(
+    def search_factories(
         self,
         factory: Factory,
         _request_timeout: Union[
@@ -55,7 +55,7 @@ class MachineGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Factory]:
-        """v2_factory_search_post
+        """Search factories
 
         Search for a specific Factory by a unique indentifier: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  Search for all factories: - `match: all` 
 
@@ -83,7 +83,7 @@ class MachineGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_factory_search_post_serialize(
+        _param = self._search_factories_serialize(
             factory=factory,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -93,12 +93,12 @@ class MachineGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Factory]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -113,7 +113,7 @@ class MachineGroupsApi:
 
 
     @validate_call
-    def v2_factory_search_post_with_http_info(
+    def search_factories_with_http_info(
         self,
         factory: Factory,
         _request_timeout: Union[
@@ -129,7 +129,7 @@ class MachineGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Factory]]:
-        """v2_factory_search_post
+        """Search factories
 
         Search for a specific Factory by a unique indentifier: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  Search for all factories: - `match: all` 
 
@@ -157,7 +157,7 @@ class MachineGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_factory_search_post_serialize(
+        _param = self._search_factories_serialize(
             factory=factory,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -167,12 +167,12 @@ class MachineGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Factory]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -187,7 +187,7 @@ class MachineGroupsApi:
 
 
     @validate_call
-    def v2_factory_search_post_without_preload_content(
+    def search_factories_without_preload_content(
         self,
         factory: Factory,
         _request_timeout: Union[
@@ -203,7 +203,7 @@ class MachineGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_factory_search_post
+        """Search factories
 
         Search for a specific Factory by a unique indentifier: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  Search for all factories: - `match: all` 
 
@@ -231,7 +231,7 @@ class MachineGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_factory_search_post_serialize(
+        _param = self._search_factories_serialize(
             factory=factory,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -241,12 +241,12 @@ class MachineGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Factory]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -256,7 +256,7 @@ class MachineGroupsApi:
         return response_data.response
 
 
-    def _v2_factory_search_post_serialize(
+    def _search_factories_serialize(
         self,
         factory,
         _request_auth,
@@ -334,7 +334,7 @@ class MachineGroupsApi:
 
 
     @validate_call
-    def v2_line_search_post(
+    def search_lines(
         self,
         line: Line,
         _request_timeout: Union[
@@ -350,7 +350,7 @@ class MachineGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Line]:
-        """v2_line_search_post
+        """Search production lines
 
         Search for specific Line by any Line identifier. Either: - `id` - `match: unique` or omit  OR - `factory`   - `name` or `id` - line `name` - `match: unique` or omit  Search for all Lines for a given Factory: - `factory`   - `name` or `id` - `match: all` 
 
@@ -378,7 +378,7 @@ class MachineGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_line_search_post_serialize(
+        _param = self._search_lines_serialize(
             line=line,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -388,12 +388,12 @@ class MachineGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Line]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -408,7 +408,7 @@ class MachineGroupsApi:
 
 
     @validate_call
-    def v2_line_search_post_with_http_info(
+    def search_lines_with_http_info(
         self,
         line: Line,
         _request_timeout: Union[
@@ -424,7 +424,7 @@ class MachineGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Line]]:
-        """v2_line_search_post
+        """Search production lines
 
         Search for specific Line by any Line identifier. Either: - `id` - `match: unique` or omit  OR - `factory`   - `name` or `id` - line `name` - `match: unique` or omit  Search for all Lines for a given Factory: - `factory`   - `name` or `id` - `match: all` 
 
@@ -452,7 +452,7 @@ class MachineGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_line_search_post_serialize(
+        _param = self._search_lines_serialize(
             line=line,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -462,12 +462,12 @@ class MachineGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Line]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -482,7 +482,7 @@ class MachineGroupsApi:
 
 
     @validate_call
-    def v2_line_search_post_without_preload_content(
+    def search_lines_without_preload_content(
         self,
         line: Line,
         _request_timeout: Union[
@@ -498,7 +498,7 @@ class MachineGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_line_search_post
+        """Search production lines
 
         Search for specific Line by any Line identifier. Either: - `id` - `match: unique` or omit  OR - `factory`   - `name` or `id` - line `name` - `match: unique` or omit  Search for all Lines for a given Factory: - `factory`   - `name` or `id` - `match: all` 
 
@@ -526,7 +526,7 @@ class MachineGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_line_search_post_serialize(
+        _param = self._search_lines_serialize(
             line=line,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -536,12 +536,12 @@ class MachineGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Line]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -551,7 +551,7 @@ class MachineGroupsApi:
         return response_data.response
 
 
-    def _v2_line_search_post_serialize(
+    def _search_lines_serialize(
         self,
         line,
         _request_auth,

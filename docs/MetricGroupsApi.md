@@ -4,11 +4,13 @@ All URIs are relative to *https://api.oden.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v2_metric_group_search_post**](MetricGroupsApi.md#v2_metric_group_search_post) | **POST** /v2/metric_group/search | 
+[**search_metric_groups**](MetricGroupsApi.md#search_metric_groups) | **POST** /v2/metric_group/search | Search metric groups
 
 
-# **v2_metric_group_search_post**
-> List[MetricGroup] v2_metric_group_search_post(metric_group)
+# **search_metric_groups**
+> List[MetricGroup] search_metric_groups(metric_group)
+
+Search metric groups
 
 Search for a specific Metric Group:
 
@@ -58,11 +60,12 @@ with oden.ApiClient(configuration) as api_client:
     metric_group = {"match":"all"} # MetricGroup | 
 
     try:
-        api_response = api_instance.v2_metric_group_search_post(metric_group)
-        print("The response of MetricGroupsApi->v2_metric_group_search_post:\n")
+        # Search metric groups
+        api_response = api_instance.search_metric_groups(metric_group)
+        print("The response of MetricGroupsApi->search_metric_groups:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling MetricGroupsApi->v2_metric_group_search_post: %s\n" % e)
+        print("Exception when calling MetricGroupsApi->search_metric_groups: %s\n" % e)
 ```
 
 

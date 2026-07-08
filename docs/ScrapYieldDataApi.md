@@ -4,13 +4,15 @@ All URIs are relative to *https://api.oden.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v2_scrap_yield_delete_post**](ScrapYieldDataApi.md#v2_scrap_yield_delete_post) | **POST** /v2/scrap_yield/delete | 
-[**v2_scrap_yield_search_post**](ScrapYieldDataApi.md#v2_scrap_yield_search_post) | **POST** /v2/scrap_yield/search | 
-[**v2_scrap_yield_set_post**](ScrapYieldDataApi.md#v2_scrap_yield_set_post) | **POST** /v2/scrap_yield/set | 
+[**delete_scrap_yield**](ScrapYieldDataApi.md#delete_scrap_yield) | **POST** /v2/scrap_yield/delete | Delete a scrap/yield record
+[**search_scrap_yield**](ScrapYieldDataApi.md#search_scrap_yield) | **POST** /v2/scrap_yield/search | Search scrap/yield records
+[**set_scrap_yield**](ScrapYieldDataApi.md#set_scrap_yield) | **POST** /v2/scrap_yield/set | Create or update a scrap/yield record
 
 
-# **v2_scrap_yield_delete_post**
-> v2_scrap_yield_delete_post(v2_scrap_yield_search_post_request)
+# **delete_scrap_yield**
+> delete_scrap_yield(search_scrap_yield_request)
+
+Delete a scrap/yield record
 
 Deletes Scrap Yield record by ID and line
 
@@ -21,7 +23,7 @@ Deletes Scrap Yield record by ID and line
 
 ```python
 import oden
-from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
+from oden.models.search_scrap_yield_request import SearchScrapYieldRequest
 from oden.rest import ApiException
 from pprint import pprint
 
@@ -46,12 +48,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with oden.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = oden.ScrapYieldDataApi(api_client)
-    v2_scrap_yield_search_post_request = {"data":{"id":"16a8fa1f-ba0a-4040-81c9-ac4dd054bdbb"},"interval":{"line":{"name":"Line 01","factory":{"name":"Factory A"}}}} # V2ScrapYieldSearchPostRequest | 
+    search_scrap_yield_request = {"data":{"id":"16a8fa1f-ba0a-4040-81c9-ac4dd054bdbb"},"interval":{"line":{"name":"Line 01","factory":{"name":"Factory A"}}}} # SearchScrapYieldRequest | 
 
     try:
-        api_instance.v2_scrap_yield_delete_post(v2_scrap_yield_search_post_request)
+        # Delete a scrap/yield record
+        api_instance.delete_scrap_yield(search_scrap_yield_request)
     except Exception as e:
-        print("Exception when calling ScrapYieldDataApi->v2_scrap_yield_delete_post: %s\n" % e)
+        print("Exception when calling ScrapYieldDataApi->delete_scrap_yield: %s\n" % e)
 ```
 
 
@@ -61,7 +64,7 @@ with oden.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v2_scrap_yield_search_post_request** | [**V2ScrapYieldSearchPostRequest**](V2ScrapYieldSearchPostRequest.md)|  | 
+ **search_scrap_yield_request** | [**SearchScrapYieldRequest**](SearchScrapYieldRequest.md)|  | 
 
 ### Return type
 
@@ -91,8 +94,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_scrap_yield_search_post**
-> v2_scrap_yield_search_post(v2_scrap_yield_search_post_request)
+# **search_scrap_yield**
+> search_scrap_yield(search_scrap_yield_request)
+
+Search scrap/yield records
 
 Searches for scrap/yield records for a given Interval
 
@@ -103,7 +108,7 @@ Searches for scrap/yield records for a given Interval
 
 ```python
 import oden
-from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
+from oden.models.search_scrap_yield_request import SearchScrapYieldRequest
 from oden.rest import ApiException
 from pprint import pprint
 
@@ -128,12 +133,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with oden.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = oden.ScrapYieldDataApi(api_client)
-    v2_scrap_yield_search_post_request = {"interval":{"id":"178b9a1ec20","line":{"name":"Line 01","factory":{"name":"Factory A"}},"type":{"name":"BATCH"}},"data":{"match":"ALL"}} # V2ScrapYieldSearchPostRequest | 
+    search_scrap_yield_request = {"interval":{"id":"178b9a1ec20","line":{"name":"Line 01","factory":{"name":"Factory A"}},"type":{"name":"BATCH"}},"data":{"match":"ALL"}} # SearchScrapYieldRequest | 
 
     try:
-        api_instance.v2_scrap_yield_search_post(v2_scrap_yield_search_post_request)
+        # Search scrap/yield records
+        api_instance.search_scrap_yield(search_scrap_yield_request)
     except Exception as e:
-        print("Exception when calling ScrapYieldDataApi->v2_scrap_yield_search_post: %s\n" % e)
+        print("Exception when calling ScrapYieldDataApi->search_scrap_yield: %s\n" % e)
 ```
 
 
@@ -143,7 +149,7 @@ with oden.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v2_scrap_yield_search_post_request** | [**V2ScrapYieldSearchPostRequest**](V2ScrapYieldSearchPostRequest.md)|  | 
+ **search_scrap_yield_request** | [**SearchScrapYieldRequest**](SearchScrapYieldRequest.md)|  | 
 
 ### Return type
 
@@ -173,8 +179,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_scrap_yield_set_post**
-> v2_scrap_yield_set_post(v2_scrap_yield_set_post_request, pattern=pattern)
+# **set_scrap_yield**
+> set_scrap_yield(set_scrap_yield_request, pattern=pattern)
+
+Create or update a scrap/yield record
 
 Uploads scrap or yield raw data.
 
@@ -199,7 +207,7 @@ Notes:
 
 ```python
 import oden
-from oden.models.v2_scrap_yield_set_post_request import V2ScrapYieldSetPostRequest
+from oden.models.set_scrap_yield_request import SetScrapYieldRequest
 from oden.rest import ApiException
 from pprint import pprint
 
@@ -224,13 +232,14 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with oden.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = oden.ScrapYieldDataApi(api_client)
-    v2_scrap_yield_set_post_request = {"data":{"raw_data":{"scrap":100,"yield":50},"timestamp":"2022-06-15T08:00:00Z"},"interval":{"id":"178b9a1ec20","line":{"name":"Line 01","factory":{"name":"Factory A"}},"type":{"name":"BATCH"}}} # V2ScrapYieldSetPostRequest | 
+    set_scrap_yield_request = {"data":{"raw_data":{"scrap":100,"yield":50},"timestamp":"2022-06-15T08:00:00Z"},"interval":{"id":"178b9a1ec20","line":{"name":"Line 01","factory":{"name":"Factory A"}},"type":{"name":"BATCH"}}} # SetScrapYieldRequest | 
     pattern = exact # str | Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression  (optional) (default to exact)
 
     try:
-        api_instance.v2_scrap_yield_set_post(v2_scrap_yield_set_post_request, pattern=pattern)
+        # Create or update a scrap/yield record
+        api_instance.set_scrap_yield(set_scrap_yield_request, pattern=pattern)
     except Exception as e:
-        print("Exception when calling ScrapYieldDataApi->v2_scrap_yield_set_post: %s\n" % e)
+        print("Exception when calling ScrapYieldDataApi->set_scrap_yield: %s\n" % e)
 ```
 
 
@@ -240,7 +249,7 @@ with oden.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v2_scrap_yield_set_post_request** | [**V2ScrapYieldSetPostRequest**](V2ScrapYieldSetPostRequest.md)|  | 
+ **set_scrap_yield_request** | [**SetScrapYieldRequest**](SetScrapYieldRequest.md)|  | 
  **pattern** | **str**| Optional pattern type to use for matching: - &#x60;exact&#x60; for exact match - &#x60;contains&#x60; for the string to be contained in the query - &#x60;regex&#x60; to match based on a regular expression  | [optional] [default to exact]
 
 ### Return type

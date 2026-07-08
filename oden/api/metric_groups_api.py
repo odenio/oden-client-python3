@@ -38,7 +38,7 @@ class MetricGroupsApi:
 
 
     @validate_call
-    def v2_metric_group_search_post(
+    def search_metric_groups(
         self,
         metric_group: MetricGroup,
         _request_timeout: Union[
@@ -54,7 +54,7 @@ class MetricGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MetricGroup]:
-        """v2_metric_group_search_post
+        """Search metric groups
 
         Search for a specific Metric Group:  - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  Search for all Metric Groups: - `match: all` 
 
@@ -82,7 +82,7 @@ class MetricGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_metric_group_search_post_serialize(
+        _param = self._search_metric_groups_serialize(
             metric_group=metric_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -92,12 +92,12 @@ class MetricGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MetricGroup]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -112,7 +112,7 @@ class MetricGroupsApi:
 
 
     @validate_call
-    def v2_metric_group_search_post_with_http_info(
+    def search_metric_groups_with_http_info(
         self,
         metric_group: MetricGroup,
         _request_timeout: Union[
@@ -128,7 +128,7 @@ class MetricGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MetricGroup]]:
-        """v2_metric_group_search_post
+        """Search metric groups
 
         Search for a specific Metric Group:  - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  Search for all Metric Groups: - `match: all` 
 
@@ -156,7 +156,7 @@ class MetricGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_metric_group_search_post_serialize(
+        _param = self._search_metric_groups_serialize(
             metric_group=metric_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -166,12 +166,12 @@ class MetricGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MetricGroup]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -186,7 +186,7 @@ class MetricGroupsApi:
 
 
     @validate_call
-    def v2_metric_group_search_post_without_preload_content(
+    def search_metric_groups_without_preload_content(
         self,
         metric_group: MetricGroup,
         _request_timeout: Union[
@@ -202,7 +202,7 @@ class MetricGroupsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_metric_group_search_post
+        """Search metric groups
 
         Search for a specific Metric Group:  - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  Search for all Metric Groups: - `match: all` 
 
@@ -230,7 +230,7 @@ class MetricGroupsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_metric_group_search_post_serialize(
+        _param = self._search_metric_groups_serialize(
             metric_group=metric_group,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -240,12 +240,12 @@ class MetricGroupsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MetricGroup]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -255,7 +255,7 @@ class MetricGroupsApi:
         return response_data.response
 
 
-    def _v2_metric_group_search_post_serialize(
+    def _search_metric_groups_serialize(
         self,
         metric_group,
         _request_auth,

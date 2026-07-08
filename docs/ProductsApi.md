@@ -4,13 +4,15 @@ All URIs are relative to *https://api.oden.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v2_product_delete_post**](ProductsApi.md#v2_product_delete_post) | **POST** /v2/product/delete | 
-[**v2_product_search_post**](ProductsApi.md#v2_product_search_post) | **POST** /v2/product/search | 
-[**v2_product_set_post**](ProductsApi.md#v2_product_set_post) | **POST** /v2/product/set | 
+[**delete_product**](ProductsApi.md#delete_product) | **POST** /v2/product/delete | Delete a product
+[**search_products**](ProductsApi.md#search_products) | **POST** /v2/product/search | Search products
+[**set_product**](ProductsApi.md#set_product) | **POST** /v2/product/set | Create or update a product
 
 
-# **v2_product_delete_post**
-> v2_product_delete_post(product)
+# **delete_product**
+> delete_product(product)
+
+Delete a product
 
 Delete a Product by unique identifier:
 - `name`
@@ -58,9 +60,10 @@ with oden.ApiClient(configuration) as api_client:
     product = {"id":"0012ab4d-1234-123a-8c76-6ea2344be6df"} # Product | 
 
     try:
-        api_instance.v2_product_delete_post(product)
+        # Delete a product
+        api_instance.delete_product(product)
     except Exception as e:
-        print("Exception when calling ProductsApi->v2_product_delete_post: %s\n" % e)
+        print("Exception when calling ProductsApi->delete_product: %s\n" % e)
 ```
 
 
@@ -99,8 +102,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_product_search_post**
-> List[Product] v2_product_search_post(product)
+# **search_products**
+> List[Product] search_products(product)
+
+Search products
 
 Search for specific Product:
 - `name`
@@ -148,11 +153,12 @@ with oden.ApiClient(configuration) as api_client:
     product = oden.Product() # Product | 
 
     try:
-        api_response = api_instance.v2_product_search_post(product)
-        print("The response of ProductsApi->v2_product_search_post:\n")
+        # Search products
+        api_response = api_instance.search_products(product)
+        print("The response of ProductsApi->search_products:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProductsApi->v2_product_search_post: %s\n" % e)
+        print("Exception when calling ProductsApi->search_products: %s\n" % e)
 ```
 
 
@@ -191,8 +197,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_product_set_post**
-> v2_product_set_post(product)
+# **set_product**
+> set_product(product)
+
+Create or update a product
 
 To **create** a new Product, include `name`, and omit `id` field.
 
@@ -233,9 +241,10 @@ with oden.ApiClient(configuration) as api_client:
     product = {"name":"product name"} # Product | 
 
     try:
-        api_instance.v2_product_set_post(product)
+        # Create or update a product
+        api_instance.set_product(product)
     except Exception as e:
-        print("Exception when calling ProductsApi->v2_product_set_post: %s\n" % e)
+        print("Exception when calling ProductsApi->set_product: %s\n" % e)
 ```
 
 

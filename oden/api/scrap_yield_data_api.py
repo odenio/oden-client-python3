@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from oden.models.v2_scrap_yield_search_post_request import V2ScrapYieldSearchPostRequest
-from oden.models.v2_scrap_yield_set_post_request import V2ScrapYieldSetPostRequest
+from oden.models.search_scrap_yield_request import SearchScrapYieldRequest
+from oden.models.set_scrap_yield_request import SetScrapYieldRequest
 
 from oden.api_client import ApiClient, RequestSerialized
 from oden.api_response import ApiResponse
@@ -41,9 +41,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_delete_post(
+    def delete_scrap_yield(
         self,
-        v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest,
+        search_scrap_yield_request: SearchScrapYieldRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,12 +57,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_scrap_yield_delete_post
+        """Delete a scrap/yield record
 
         Deletes Scrap Yield record by ID and line 
 
-        :param v2_scrap_yield_search_post_request: (required)
-        :type v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest
+        :param search_scrap_yield_request: (required)
+        :type search_scrap_yield_request: SearchScrapYieldRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,8 +85,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_delete_post_serialize(
-            v2_scrap_yield_search_post_request=v2_scrap_yield_search_post_request,
+        _param = self._delete_scrap_yield_serialize(
+            search_scrap_yield_request=search_scrap_yield_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -95,12 +95,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -115,9 +115,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_delete_post_with_http_info(
+    def delete_scrap_yield_with_http_info(
         self,
-        v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest,
+        search_scrap_yield_request: SearchScrapYieldRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -131,12 +131,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_scrap_yield_delete_post
+        """Delete a scrap/yield record
 
         Deletes Scrap Yield record by ID and line 
 
-        :param v2_scrap_yield_search_post_request: (required)
-        :type v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest
+        :param search_scrap_yield_request: (required)
+        :type search_scrap_yield_request: SearchScrapYieldRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -159,8 +159,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_delete_post_serialize(
-            v2_scrap_yield_search_post_request=v2_scrap_yield_search_post_request,
+        _param = self._delete_scrap_yield_serialize(
+            search_scrap_yield_request=search_scrap_yield_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -169,12 +169,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -189,9 +189,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_delete_post_without_preload_content(
+    def delete_scrap_yield_without_preload_content(
         self,
-        v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest,
+        search_scrap_yield_request: SearchScrapYieldRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -205,12 +205,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_scrap_yield_delete_post
+        """Delete a scrap/yield record
 
         Deletes Scrap Yield record by ID and line 
 
-        :param v2_scrap_yield_search_post_request: (required)
-        :type v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest
+        :param search_scrap_yield_request: (required)
+        :type search_scrap_yield_request: SearchScrapYieldRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -233,8 +233,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_delete_post_serialize(
-            v2_scrap_yield_search_post_request=v2_scrap_yield_search_post_request,
+        _param = self._delete_scrap_yield_serialize(
+            search_scrap_yield_request=search_scrap_yield_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -243,12 +243,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -258,9 +258,9 @@ class ScrapYieldDataApi:
         return response_data.response
 
 
-    def _v2_scrap_yield_delete_post_serialize(
+    def _delete_scrap_yield_serialize(
         self,
-        v2_scrap_yield_search_post_request,
+        search_scrap_yield_request,
         _request_auth,
         _content_type,
         _headers,
@@ -286,8 +286,8 @@ class ScrapYieldDataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if v2_scrap_yield_search_post_request is not None:
-            _body_params = v2_scrap_yield_search_post_request
+        if search_scrap_yield_request is not None:
+            _body_params = search_scrap_yield_request
 
 
         # set the HTTP header `Accept`
@@ -336,9 +336,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_search_post(
+    def search_scrap_yield(
         self,
-        v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest,
+        search_scrap_yield_request: SearchScrapYieldRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -352,12 +352,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_scrap_yield_search_post
+        """Search scrap/yield records
 
         Searches for scrap/yield records for a given Interval 
 
-        :param v2_scrap_yield_search_post_request: (required)
-        :type v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest
+        :param search_scrap_yield_request: (required)
+        :type search_scrap_yield_request: SearchScrapYieldRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -380,8 +380,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_search_post_serialize(
-            v2_scrap_yield_search_post_request=v2_scrap_yield_search_post_request,
+        _param = self._search_scrap_yield_serialize(
+            search_scrap_yield_request=search_scrap_yield_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -390,12 +390,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -410,9 +410,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_search_post_with_http_info(
+    def search_scrap_yield_with_http_info(
         self,
-        v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest,
+        search_scrap_yield_request: SearchScrapYieldRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -426,12 +426,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_scrap_yield_search_post
+        """Search scrap/yield records
 
         Searches for scrap/yield records for a given Interval 
 
-        :param v2_scrap_yield_search_post_request: (required)
-        :type v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest
+        :param search_scrap_yield_request: (required)
+        :type search_scrap_yield_request: SearchScrapYieldRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -454,8 +454,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_search_post_serialize(
-            v2_scrap_yield_search_post_request=v2_scrap_yield_search_post_request,
+        _param = self._search_scrap_yield_serialize(
+            search_scrap_yield_request=search_scrap_yield_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -464,12 +464,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -484,9 +484,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_search_post_without_preload_content(
+    def search_scrap_yield_without_preload_content(
         self,
-        v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest,
+        search_scrap_yield_request: SearchScrapYieldRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -500,12 +500,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_scrap_yield_search_post
+        """Search scrap/yield records
 
         Searches for scrap/yield records for a given Interval 
 
-        :param v2_scrap_yield_search_post_request: (required)
-        :type v2_scrap_yield_search_post_request: V2ScrapYieldSearchPostRequest
+        :param search_scrap_yield_request: (required)
+        :type search_scrap_yield_request: SearchScrapYieldRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -528,8 +528,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_search_post_serialize(
-            v2_scrap_yield_search_post_request=v2_scrap_yield_search_post_request,
+        _param = self._search_scrap_yield_serialize(
+            search_scrap_yield_request=search_scrap_yield_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -538,12 +538,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -553,9 +553,9 @@ class ScrapYieldDataApi:
         return response_data.response
 
 
-    def _v2_scrap_yield_search_post_serialize(
+    def _search_scrap_yield_serialize(
         self,
-        v2_scrap_yield_search_post_request,
+        search_scrap_yield_request,
         _request_auth,
         _content_type,
         _headers,
@@ -581,8 +581,8 @@ class ScrapYieldDataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if v2_scrap_yield_search_post_request is not None:
-            _body_params = v2_scrap_yield_search_post_request
+        if search_scrap_yield_request is not None:
+            _body_params = search_scrap_yield_request
 
 
         # set the HTTP header `Accept`
@@ -631,9 +631,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_set_post(
+    def set_scrap_yield(
         self,
-        v2_scrap_yield_set_post_request: V2ScrapYieldSetPostRequest,
+        set_scrap_yield_request: SetScrapYieldRequest,
         pattern: Annotated[Optional[StrictStr], Field(description="Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression ")] = None,
         _request_timeout: Union[
             None,
@@ -648,12 +648,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_scrap_yield_set_post
+        """Create or update a scrap/yield record
 
         Uploads scrap or yield raw data.  Notes:  - If `id` is provided the existing Scrap/Yield record will be updated.  - If `id` is omitted a new Scrap/Yield record will be created.  - The scrap yield for an interval is an aggregate of all scrap yield raw data records associated with that interval     - Therefore, multiple scrap yield records can exist for a single interval, each contributing to the \"aggregate\" (i.e. sum total) scrap/yield of that interval  - Changing an aggregate can be done by either adding another record with an offset, or updating an existing record.     - Example: If you have 3 scrap records in an interval: 50 50 50 = 150 and want to make the aggregate 100 for a given interval, either update one of the existing scrap records from 50 -> 0, or add a new one with value -50  - Duplicate keys should be avoided, see Schema docs above for details. 
 
-        :param v2_scrap_yield_set_post_request: (required)
-        :type v2_scrap_yield_set_post_request: V2ScrapYieldSetPostRequest
+        :param set_scrap_yield_request: (required)
+        :type set_scrap_yield_request: SetScrapYieldRequest
         :param pattern: Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression 
         :type pattern: str
         :param _request_timeout: timeout setting for this request. If one
@@ -678,8 +678,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_set_post_serialize(
-            v2_scrap_yield_set_post_request=v2_scrap_yield_set_post_request,
+        _param = self._set_scrap_yield_serialize(
+            set_scrap_yield_request=set_scrap_yield_request,
             pattern=pattern,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -689,12 +689,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -709,9 +709,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_set_post_with_http_info(
+    def set_scrap_yield_with_http_info(
         self,
-        v2_scrap_yield_set_post_request: V2ScrapYieldSetPostRequest,
+        set_scrap_yield_request: SetScrapYieldRequest,
         pattern: Annotated[Optional[StrictStr], Field(description="Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression ")] = None,
         _request_timeout: Union[
             None,
@@ -726,12 +726,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_scrap_yield_set_post
+        """Create or update a scrap/yield record
 
         Uploads scrap or yield raw data.  Notes:  - If `id` is provided the existing Scrap/Yield record will be updated.  - If `id` is omitted a new Scrap/Yield record will be created.  - The scrap yield for an interval is an aggregate of all scrap yield raw data records associated with that interval     - Therefore, multiple scrap yield records can exist for a single interval, each contributing to the \"aggregate\" (i.e. sum total) scrap/yield of that interval  - Changing an aggregate can be done by either adding another record with an offset, or updating an existing record.     - Example: If you have 3 scrap records in an interval: 50 50 50 = 150 and want to make the aggregate 100 for a given interval, either update one of the existing scrap records from 50 -> 0, or add a new one with value -50  - Duplicate keys should be avoided, see Schema docs above for details. 
 
-        :param v2_scrap_yield_set_post_request: (required)
-        :type v2_scrap_yield_set_post_request: V2ScrapYieldSetPostRequest
+        :param set_scrap_yield_request: (required)
+        :type set_scrap_yield_request: SetScrapYieldRequest
         :param pattern: Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression 
         :type pattern: str
         :param _request_timeout: timeout setting for this request. If one
@@ -756,8 +756,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_set_post_serialize(
-            v2_scrap_yield_set_post_request=v2_scrap_yield_set_post_request,
+        _param = self._set_scrap_yield_serialize(
+            set_scrap_yield_request=set_scrap_yield_request,
             pattern=pattern,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -767,12 +767,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -787,9 +787,9 @@ class ScrapYieldDataApi:
 
 
     @validate_call
-    def v2_scrap_yield_set_post_without_preload_content(
+    def set_scrap_yield_without_preload_content(
         self,
-        v2_scrap_yield_set_post_request: V2ScrapYieldSetPostRequest,
+        set_scrap_yield_request: SetScrapYieldRequest,
         pattern: Annotated[Optional[StrictStr], Field(description="Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression ")] = None,
         _request_timeout: Union[
             None,
@@ -804,12 +804,12 @@ class ScrapYieldDataApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_scrap_yield_set_post
+        """Create or update a scrap/yield record
 
         Uploads scrap or yield raw data.  Notes:  - If `id` is provided the existing Scrap/Yield record will be updated.  - If `id` is omitted a new Scrap/Yield record will be created.  - The scrap yield for an interval is an aggregate of all scrap yield raw data records associated with that interval     - Therefore, multiple scrap yield records can exist for a single interval, each contributing to the \"aggregate\" (i.e. sum total) scrap/yield of that interval  - Changing an aggregate can be done by either adding another record with an offset, or updating an existing record.     - Example: If you have 3 scrap records in an interval: 50 50 50 = 150 and want to make the aggregate 100 for a given interval, either update one of the existing scrap records from 50 -> 0, or add a new one with value -50  - Duplicate keys should be avoided, see Schema docs above for details. 
 
-        :param v2_scrap_yield_set_post_request: (required)
-        :type v2_scrap_yield_set_post_request: V2ScrapYieldSetPostRequest
+        :param set_scrap_yield_request: (required)
+        :type set_scrap_yield_request: SetScrapYieldRequest
         :param pattern: Optional pattern type to use for matching: - `exact` for exact match - `contains` for the string to be contained in the query - `regex` to match based on a regular expression 
         :type pattern: str
         :param _request_timeout: timeout setting for this request. If one
@@ -834,8 +834,8 @@ class ScrapYieldDataApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_scrap_yield_set_post_serialize(
-            v2_scrap_yield_set_post_request=v2_scrap_yield_set_post_request,
+        _param = self._set_scrap_yield_serialize(
+            set_scrap_yield_request=set_scrap_yield_request,
             pattern=pattern,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -845,12 +845,12 @@ class ScrapYieldDataApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -860,9 +860,9 @@ class ScrapYieldDataApi:
         return response_data.response
 
 
-    def _v2_scrap_yield_set_post_serialize(
+    def _set_scrap_yield_serialize(
         self,
-        v2_scrap_yield_set_post_request,
+        set_scrap_yield_request,
         pattern,
         _request_auth,
         _content_type,
@@ -893,8 +893,8 @@ class ScrapYieldDataApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if v2_scrap_yield_set_post_request is not None:
-            _body_params = v2_scrap_yield_set_post_request
+        if set_scrap_yield_request is not None:
+            _body_params = set_scrap_yield_request
 
 
         # set the HTTP header `Accept`

@@ -40,7 +40,7 @@ class OQLApi:
 
 
     @validate_call
-    def v2_oql_query_post(
+    def run_oql_query(
         self,
         oql_query: OQLQuery,
         format: Annotated[Optional[StrictStr], Field(description="Format of the response. Can be `json`, `jsonextended` or `csv`. If unspecified, defaults to `jsonextended`. ")] = None,
@@ -57,7 +57,7 @@ class OQLApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_oql_query_post
+        """Run an OQL query
 
         Run an OQL (Oden Query Language) query.  For reference on writing OQL queries, see:  [https://platform.oden.app/knowledge/how-do-i-write-queries-in-oden-query-language-oql](https://platform.oden.app/knowledge/how-do-i-write-queries-in-oden-query-language-oql) 
 
@@ -87,7 +87,7 @@ class OQLApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_oql_query_post_serialize(
+        _param = self._run_oql_query_serialize(
             oql_query=oql_query,
             format=format,
             _request_auth=_request_auth,
@@ -98,13 +98,13 @@ class OQLApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '413': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '429': "GenericError",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -119,7 +119,7 @@ class OQLApi:
 
 
     @validate_call
-    def v2_oql_query_post_with_http_info(
+    def run_oql_query_with_http_info(
         self,
         oql_query: OQLQuery,
         format: Annotated[Optional[StrictStr], Field(description="Format of the response. Can be `json`, `jsonextended` or `csv`. If unspecified, defaults to `jsonextended`. ")] = None,
@@ -136,7 +136,7 @@ class OQLApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_oql_query_post
+        """Run an OQL query
 
         Run an OQL (Oden Query Language) query.  For reference on writing OQL queries, see:  [https://platform.oden.app/knowledge/how-do-i-write-queries-in-oden-query-language-oql](https://platform.oden.app/knowledge/how-do-i-write-queries-in-oden-query-language-oql) 
 
@@ -166,7 +166,7 @@ class OQLApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_oql_query_post_serialize(
+        _param = self._run_oql_query_serialize(
             oql_query=oql_query,
             format=format,
             _request_auth=_request_auth,
@@ -177,13 +177,13 @@ class OQLApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '413': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '429': "GenericError",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -198,7 +198,7 @@ class OQLApi:
 
 
     @validate_call
-    def v2_oql_query_post_without_preload_content(
+    def run_oql_query_without_preload_content(
         self,
         oql_query: OQLQuery,
         format: Annotated[Optional[StrictStr], Field(description="Format of the response. Can be `json`, `jsonextended` or `csv`. If unspecified, defaults to `jsonextended`. ")] = None,
@@ -215,7 +215,7 @@ class OQLApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_oql_query_post
+        """Run an OQL query
 
         Run an OQL (Oden Query Language) query.  For reference on writing OQL queries, see:  [https://platform.oden.app/knowledge/how-do-i-write-queries-in-oden-query-language-oql](https://platform.oden.app/knowledge/how-do-i-write-queries-in-oden-query-language-oql) 
 
@@ -245,7 +245,7 @@ class OQLApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_oql_query_post_serialize(
+        _param = self._run_oql_query_serialize(
             oql_query=oql_query,
             format=format,
             _request_auth=_request_auth,
@@ -256,13 +256,13 @@ class OQLApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '413': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '429': "GenericError",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -272,7 +272,7 @@ class OQLApi:
         return response_data.response
 
 
-    def _v2_oql_query_post_serialize(
+    def _run_oql_query_serialize(
         self,
         oql_query,
         format,

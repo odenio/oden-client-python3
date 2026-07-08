@@ -38,7 +38,7 @@ class ProductAttributesApi:
 
 
     @validate_call
-    def v2_product_attribute_search_post(
+    def search_product_attributes(
         self,
         product_attribute: ProductAttribute,
         _request_timeout: Union[
@@ -54,7 +54,7 @@ class ProductAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ProductAttribute]:
-        """v2_product_attribute_search_post
+        """Search product attributes
 
         Searches for Product Attributes  Product attributes may be searched by ID, product, or, display_name - in that order.  If an ID is supplied, it will be used to search for a Product Attribute, and display_name, product will be ignored.  If a product is supplied (and no ID), it will be used to search for a Product Attribute, and display_name will be ignored. 
 
@@ -82,7 +82,7 @@ class ProductAttributesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_attribute_search_post_serialize(
+        _param = self._search_product_attributes_serialize(
             product_attribute=product_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -92,11 +92,11 @@ class ProductAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductAttribute]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -110,7 +110,7 @@ class ProductAttributesApi:
 
 
     @validate_call
-    def v2_product_attribute_search_post_with_http_info(
+    def search_product_attributes_with_http_info(
         self,
         product_attribute: ProductAttribute,
         _request_timeout: Union[
@@ -126,7 +126,7 @@ class ProductAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ProductAttribute]]:
-        """v2_product_attribute_search_post
+        """Search product attributes
 
         Searches for Product Attributes  Product attributes may be searched by ID, product, or, display_name - in that order.  If an ID is supplied, it will be used to search for a Product Attribute, and display_name, product will be ignored.  If a product is supplied (and no ID), it will be used to search for a Product Attribute, and display_name will be ignored. 
 
@@ -154,7 +154,7 @@ class ProductAttributesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_attribute_search_post_serialize(
+        _param = self._search_product_attributes_serialize(
             product_attribute=product_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -164,11 +164,11 @@ class ProductAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductAttribute]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -182,7 +182,7 @@ class ProductAttributesApi:
 
 
     @validate_call
-    def v2_product_attribute_search_post_without_preload_content(
+    def search_product_attributes_without_preload_content(
         self,
         product_attribute: ProductAttribute,
         _request_timeout: Union[
@@ -198,7 +198,7 @@ class ProductAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_attribute_search_post
+        """Search product attributes
 
         Searches for Product Attributes  Product attributes may be searched by ID, product, or, display_name - in that order.  If an ID is supplied, it will be used to search for a Product Attribute, and display_name, product will be ignored.  If a product is supplied (and no ID), it will be used to search for a Product Attribute, and display_name will be ignored. 
 
@@ -226,7 +226,7 @@ class ProductAttributesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_attribute_search_post_serialize(
+        _param = self._search_product_attributes_serialize(
             product_attribute=product_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -236,11 +236,11 @@ class ProductAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductAttribute]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -249,7 +249,7 @@ class ProductAttributesApi:
         return response_data.response
 
 
-    def _v2_product_attribute_search_post_serialize(
+    def _search_product_attributes_serialize(
         self,
         product_attribute,
         _request_auth,
@@ -327,7 +327,7 @@ class ProductAttributesApi:
 
 
     @validate_call
-    def v2_product_attribute_set_post(
+    def set_product_attribute(
         self,
         product_attribute: ProductAttribute,
         _request_timeout: Union[
@@ -343,7 +343,7 @@ class ProductAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ProductAttribute]:
-        """v2_product_attribute_set_post
+        """Create or update a product attribute
 
         Set a Product Attribute for a Product.  If the supplied Product Attribute doesn't exist, it will be created.  If the supplied Product Attribute Value doesn't exist, it will be created.  If the supplied Product Attribute Value is already set for the Product, it will be updated.  If the supplied Product Attribute Value is not set for the Product, it will be added.  Supplied Product must exist already. 
 
@@ -371,7 +371,7 @@ class ProductAttributesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_attribute_set_post_serialize(
+        _param = self._set_product_attribute_serialize(
             product_attribute=product_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -381,11 +381,11 @@ class ProductAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductAttribute]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -399,7 +399,7 @@ class ProductAttributesApi:
 
 
     @validate_call
-    def v2_product_attribute_set_post_with_http_info(
+    def set_product_attribute_with_http_info(
         self,
         product_attribute: ProductAttribute,
         _request_timeout: Union[
@@ -415,7 +415,7 @@ class ProductAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ProductAttribute]]:
-        """v2_product_attribute_set_post
+        """Create or update a product attribute
 
         Set a Product Attribute for a Product.  If the supplied Product Attribute doesn't exist, it will be created.  If the supplied Product Attribute Value doesn't exist, it will be created.  If the supplied Product Attribute Value is already set for the Product, it will be updated.  If the supplied Product Attribute Value is not set for the Product, it will be added.  Supplied Product must exist already. 
 
@@ -443,7 +443,7 @@ class ProductAttributesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_attribute_set_post_serialize(
+        _param = self._set_product_attribute_serialize(
             product_attribute=product_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -453,11 +453,11 @@ class ProductAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductAttribute]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -471,7 +471,7 @@ class ProductAttributesApi:
 
 
     @validate_call
-    def v2_product_attribute_set_post_without_preload_content(
+    def set_product_attribute_without_preload_content(
         self,
         product_attribute: ProductAttribute,
         _request_timeout: Union[
@@ -487,7 +487,7 @@ class ProductAttributesApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_attribute_set_post
+        """Create or update a product attribute
 
         Set a Product Attribute for a Product.  If the supplied Product Attribute doesn't exist, it will be created.  If the supplied Product Attribute Value doesn't exist, it will be created.  If the supplied Product Attribute Value is already set for the Product, it will be updated.  If the supplied Product Attribute Value is not set for the Product, it will be added.  Supplied Product must exist already. 
 
@@ -515,7 +515,7 @@ class ProductAttributesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_attribute_set_post_serialize(
+        _param = self._set_product_attribute_serialize(
             product_attribute=product_attribute,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -525,11 +525,11 @@ class ProductAttributesApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductAttribute]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -538,7 +538,7 @@ class ProductAttributesApi:
         return response_data.response
 
 
-    def _v2_product_attribute_set_post_serialize(
+    def _set_product_attribute_serialize(
         self,
         product_attribute,
         _request_auth,

@@ -38,7 +38,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_delete_post(
+    def delete_product(
         self,
         product: Product,
         _request_timeout: Union[
@@ -54,7 +54,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_product_delete_post
+        """Delete a product
 
         Delete a Product by unique identifier: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  A deleted Product will not show up in Product searches or dropdowns, but associated Intervals will still exist. 
 
@@ -82,7 +82,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_delete_post_serialize(
+        _param = self._delete_product_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -92,11 +92,11 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -111,7 +111,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_delete_post_with_http_info(
+    def delete_product_with_http_info(
         self,
         product: Product,
         _request_timeout: Union[
@@ -127,7 +127,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_product_delete_post
+        """Delete a product
 
         Delete a Product by unique identifier: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  A deleted Product will not show up in Product searches or dropdowns, but associated Intervals will still exist. 
 
@@ -155,7 +155,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_delete_post_serialize(
+        _param = self._delete_product_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -165,11 +165,11 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -184,7 +184,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_delete_post_without_preload_content(
+    def delete_product_without_preload_content(
         self,
         product: Product,
         _request_timeout: Union[
@@ -200,7 +200,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_delete_post
+        """Delete a product
 
         Delete a Product by unique identifier: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  A deleted Product will not show up in Product searches or dropdowns, but associated Intervals will still exist. 
 
@@ -228,7 +228,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_delete_post_serialize(
+        _param = self._delete_product_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -238,11 +238,11 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -252,7 +252,7 @@ class ProductsApi:
         return response_data.response
 
 
-    def _v2_product_delete_post_serialize(
+    def _delete_product_serialize(
         self,
         product,
         _request_auth,
@@ -330,7 +330,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_search_post(
+    def search_products(
         self,
         product: Product,
         _request_timeout: Union[
@@ -346,7 +346,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Product]:
-        """v2_product_search_post
+        """Search products
 
         Search for specific Product: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  May be used to confirm a Product exists or to get a Product `id` if `name` is known, or `name` if `id` is known. 
 
@@ -374,7 +374,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_search_post_serialize(
+        _param = self._search_products_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -384,12 +384,12 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Product]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -403,7 +403,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_search_post_with_http_info(
+    def search_products_with_http_info(
         self,
         product: Product,
         _request_timeout: Union[
@@ -419,7 +419,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Product]]:
-        """v2_product_search_post
+        """Search products
 
         Search for specific Product: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  May be used to confirm a Product exists or to get a Product `id` if `name` is known, or `name` if `id` is known. 
 
@@ -447,7 +447,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_search_post_serialize(
+        _param = self._search_products_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -457,12 +457,12 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Product]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -476,7 +476,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_search_post_without_preload_content(
+    def search_products_without_preload_content(
         self,
         product: Product,
         _request_timeout: Union[
@@ -492,7 +492,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_search_post
+        """Search products
 
         Search for specific Product: - `name` - `match: unique` or omit  OR  - `id` - `match: unique` or omit  May be used to confirm a Product exists or to get a Product `id` if `name` is known, or `name` if `id` is known. 
 
@@ -520,7 +520,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_search_post_serialize(
+        _param = self._search_products_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -530,12 +530,12 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Product]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -544,7 +544,7 @@ class ProductsApi:
         return response_data.response
 
 
-    def _v2_product_search_post_serialize(
+    def _search_products_serialize(
         self,
         product,
         _request_auth,
@@ -622,7 +622,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_set_post(
+    def set_product(
         self,
         product: Product,
         _request_timeout: Union[
@@ -638,7 +638,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_product_set_post
+        """Create or update a product
 
         To **create** a new Product, include `name`, and omit `id` field.  To **update** an existing Product, include the `id` of the existing product the updated `name`. 
 
@@ -666,7 +666,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_set_post_serialize(
+        _param = self._set_product_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -676,11 +676,11 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -694,7 +694,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_set_post_with_http_info(
+    def set_product_with_http_info(
         self,
         product: Product,
         _request_timeout: Union[
@@ -710,7 +710,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_product_set_post
+        """Create or update a product
 
         To **create** a new Product, include `name`, and omit `id` field.  To **update** an existing Product, include the `id` of the existing product the updated `name`. 
 
@@ -738,7 +738,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_set_post_serialize(
+        _param = self._set_product_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -748,11 +748,11 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -766,7 +766,7 @@ class ProductsApi:
 
 
     @validate_call
-    def v2_product_set_post_without_preload_content(
+    def set_product_without_preload_content(
         self,
         product: Product,
         _request_timeout: Union[
@@ -782,7 +782,7 @@ class ProductsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_set_post
+        """Create or update a product
 
         To **create** a new Product, include `name`, and omit `id` field.  To **update** an existing Product, include the `id` of the existing product the updated `name`. 
 
@@ -810,7 +810,7 @@ class ProductsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_set_post_serialize(
+        _param = self._set_product_serialize(
             product=product,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -820,11 +820,11 @@ class ProductsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -833,7 +833,7 @@ class ProductsApi:
         return response_data.response
 
 
-    def _v2_product_set_post_serialize(
+    def _set_product_serialize(
         self,
         product,
         _request_auth,

@@ -38,7 +38,7 @@ class ProductMappingsApi:
 
 
     @validate_call
-    def v2_product_mapping_search_post(
+    def search_product_mappings(
         self,
         product_mapping: ProductMapping,
         _request_timeout: Union[
@@ -54,7 +54,7 @@ class ProductMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ProductMapping]:
-        """v2_product_mapping_search_post
+        """Search product-to-line mappings
 
         Searches for Product Mappings.  May be used to confirm a Product Mapping exists.  Much like `product/search`, may be used to get `name`s of line or product from `id`s, or `id`s from `name`s. 
 
@@ -82,7 +82,7 @@ class ProductMappingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_mapping_search_post_serialize(
+        _param = self._search_product_mappings_serialize(
             product_mapping=product_mapping,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -92,11 +92,11 @@ class ProductMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductMapping]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -110,7 +110,7 @@ class ProductMappingsApi:
 
 
     @validate_call
-    def v2_product_mapping_search_post_with_http_info(
+    def search_product_mappings_with_http_info(
         self,
         product_mapping: ProductMapping,
         _request_timeout: Union[
@@ -126,7 +126,7 @@ class ProductMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ProductMapping]]:
-        """v2_product_mapping_search_post
+        """Search product-to-line mappings
 
         Searches for Product Mappings.  May be used to confirm a Product Mapping exists.  Much like `product/search`, may be used to get `name`s of line or product from `id`s, or `id`s from `name`s. 
 
@@ -154,7 +154,7 @@ class ProductMappingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_mapping_search_post_serialize(
+        _param = self._search_product_mappings_serialize(
             product_mapping=product_mapping,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -164,11 +164,11 @@ class ProductMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductMapping]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -182,7 +182,7 @@ class ProductMappingsApi:
 
 
     @validate_call
-    def v2_product_mapping_search_post_without_preload_content(
+    def search_product_mappings_without_preload_content(
         self,
         product_mapping: ProductMapping,
         _request_timeout: Union[
@@ -198,7 +198,7 @@ class ProductMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_mapping_search_post
+        """Search product-to-line mappings
 
         Searches for Product Mappings.  May be used to confirm a Product Mapping exists.  Much like `product/search`, may be used to get `name`s of line or product from `id`s, or `id`s from `name`s. 
 
@@ -226,7 +226,7 @@ class ProductMappingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_mapping_search_post_serialize(
+        _param = self._search_product_mappings_serialize(
             product_mapping=product_mapping,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -236,11 +236,11 @@ class ProductMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ProductMapping]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -249,7 +249,7 @@ class ProductMappingsApi:
         return response_data.response
 
 
-    def _v2_product_mapping_search_post_serialize(
+    def _search_product_mappings_serialize(
         self,
         product_mapping,
         _request_auth,
@@ -327,7 +327,7 @@ class ProductMappingsApi:
 
 
     @validate_call
-    def v2_product_mapping_set_post(
+    def set_product_mapping(
         self,
         product_mapping: ProductMapping,
         _request_timeout: Union[
@@ -343,7 +343,7 @@ class ProductMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_product_mapping_set_post
+        """Map a product to a line
 
         Map a Product to a Line - implying this Line can produce, or is producing this Product.  If the supplied Product doesn't exist, it will be created. 
 
@@ -371,7 +371,7 @@ class ProductMappingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_mapping_set_post_serialize(
+        _param = self._set_product_mapping_serialize(
             product_mapping=product_mapping,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -381,11 +381,11 @@ class ProductMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -400,7 +400,7 @@ class ProductMappingsApi:
 
 
     @validate_call
-    def v2_product_mapping_set_post_with_http_info(
+    def set_product_mapping_with_http_info(
         self,
         product_mapping: ProductMapping,
         _request_timeout: Union[
@@ -416,7 +416,7 @@ class ProductMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_product_mapping_set_post
+        """Map a product to a line
 
         Map a Product to a Line - implying this Line can produce, or is producing this Product.  If the supplied Product doesn't exist, it will be created. 
 
@@ -444,7 +444,7 @@ class ProductMappingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_mapping_set_post_serialize(
+        _param = self._set_product_mapping_serialize(
             product_mapping=product_mapping,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -454,11 +454,11 @@ class ProductMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -473,7 +473,7 @@ class ProductMappingsApi:
 
 
     @validate_call
-    def v2_product_mapping_set_post_without_preload_content(
+    def set_product_mapping_without_preload_content(
         self,
         product_mapping: ProductMapping,
         _request_timeout: Union[
@@ -489,7 +489,7 @@ class ProductMappingsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_product_mapping_set_post
+        """Map a product to a line
 
         Map a Product to a Line - implying this Line can produce, or is producing this Product.  If the supplied Product doesn't exist, it will be created. 
 
@@ -517,7 +517,7 @@ class ProductMappingsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_product_mapping_set_post_serialize(
+        _param = self._set_product_mapping_serialize(
             product_mapping=product_mapping,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,11 +527,11 @@ class ProductMappingsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -541,7 +541,7 @@ class ProductMappingsApi:
         return response_data.response
 
 
-    def _v2_product_mapping_set_post_serialize(
+    def _set_product_mapping_serialize(
         self,
         product_mapping,
         _request_auth,

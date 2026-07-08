@@ -4,12 +4,14 @@ All URIs are relative to *https://api.oden.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v2_product_mapping_search_post**](ProductMappingsApi.md#v2_product_mapping_search_post) | **POST** /v2/product_mapping/search | 
-[**v2_product_mapping_set_post**](ProductMappingsApi.md#v2_product_mapping_set_post) | **POST** /v2/product_mapping/set | 
+[**search_product_mappings**](ProductMappingsApi.md#search_product_mappings) | **POST** /v2/product_mapping/search | Search product-to-line mappings
+[**set_product_mapping**](ProductMappingsApi.md#set_product_mapping) | **POST** /v2/product_mapping/set | Map a product to a line
 
 
-# **v2_product_mapping_search_post**
-> List[ProductMapping] v2_product_mapping_search_post(product_mapping)
+# **search_product_mappings**
+> List[ProductMapping] search_product_mappings(product_mapping)
+
+Search product-to-line mappings
 
 Searches for Product Mappings.
 
@@ -53,11 +55,12 @@ with oden.ApiClient(configuration) as api_client:
     product_mapping = {"line":{"id":"2fc8b5e5-fb88-48a7-9c35-4a763206608c"},"product":{"id":"b5da7b1f-3c16-5084-a5da-95b2eba5a4db"}} # ProductMapping | 
 
     try:
-        api_response = api_instance.v2_product_mapping_search_post(product_mapping)
-        print("The response of ProductMappingsApi->v2_product_mapping_search_post:\n")
+        # Search product-to-line mappings
+        api_response = api_instance.search_product_mappings(product_mapping)
+        print("The response of ProductMappingsApi->search_product_mappings:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProductMappingsApi->v2_product_mapping_search_post: %s\n" % e)
+        print("Exception when calling ProductMappingsApi->search_product_mappings: %s\n" % e)
 ```
 
 
@@ -95,8 +98,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_product_mapping_set_post**
-> v2_product_mapping_set_post(product_mapping)
+# **set_product_mapping**
+> set_product_mapping(product_mapping)
+
+Map a product to a line
 
 Map a Product to a Line - implying this Line can produce, or is producing this Product.
 
@@ -137,9 +142,10 @@ with oden.ApiClient(configuration) as api_client:
     product_mapping = {"line":{"id":"2fc8b5e5-fb88-48a7-9c35-4a763206608c"},"product":{"id":"b5da7b1f-3c16-5084-a5da-95b2eba5a4db"}} # ProductMapping | 
 
     try:
-        api_instance.v2_product_mapping_set_post(product_mapping)
+        # Map a product to a line
+        api_instance.set_product_mapping(product_mapping)
     except Exception as e:
-        print("Exception when calling ProductMappingsApi->v2_product_mapping_set_post: %s\n" % e)
+        print("Exception when calling ProductMappingsApi->set_product_mapping: %s\n" % e)
 ```
 
 

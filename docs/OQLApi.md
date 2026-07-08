@@ -4,11 +4,13 @@ All URIs are relative to *https://api.oden.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v2_oql_query_post**](OQLApi.md#v2_oql_query_post) | **POST** /v2/oql/query | 
+[**run_oql_query**](OQLApi.md#run_oql_query) | **POST** /v2/oql/query | Run an OQL query
 
 
-# **v2_oql_query_post**
-> v2_oql_query_post(oql_query, format=format)
+# **run_oql_query**
+> run_oql_query(oql_query, format=format)
+
+Run an OQL query
 
 Run an OQL (Oden Query Language) query.
 
@@ -52,9 +54,10 @@ with oden.ApiClient(configuration) as api_client:
     format = json # str | Format of the response. Can be `json`, `jsonextended` or `csv`. If unspecified, defaults to `jsonextended`.  (optional) (default to json)
 
     try:
-        api_instance.v2_oql_query_post(oql_query, format=format)
+        # Run an OQL query
+        api_instance.run_oql_query(oql_query, format=format)
     except Exception as e:
-        print("Exception when calling OQLApi->v2_oql_query_post: %s\n" % e)
+        print("Exception when calling OQLApi->run_oql_query: %s\n" % e)
 ```
 
 
@@ -90,7 +93,7 @@ void (empty response body)
 **403** | User has provided valid credentials but is not authorized to access the entity  |  -  |
 **404** | Entity not found |  -  |
 **409** | A {match: \&quot;unique\&quot;} was requested, but multiple entities matched the search parameters.  |  -  |
-**413** | Too many requests |  -  |
+**429** | Too many requests |  -  |
 **500** | An internal server error has occurred. If reporting the error to Oden, include the ID returned in this response to aid in debugging.  |  -  |
 **501** | Endpoint is not yet implemented |  -  |
 

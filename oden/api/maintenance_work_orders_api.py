@@ -18,7 +18,7 @@ from typing_extensions import Annotated
 
 from typing import List
 from oden.models.maintenance_work_order import MaintenanceWorkOrder
-from oden.models.v2_maintenance_work_order_search_post_request import V2MaintenanceWorkOrderSearchPostRequest
+from oden.models.search_maintenance_work_orders_request import SearchMaintenanceWorkOrdersRequest
 
 from oden.api_client import ApiClient, RequestSerialized
 from oden.api_response import ApiResponse
@@ -39,7 +39,7 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_delete_post(
+    def delete_maintenance_work_order(
         self,
         maintenance_work_order: MaintenanceWorkOrder,
         _request_timeout: Union[
@@ -55,7 +55,7 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MaintenanceWorkOrder]:
-        """v2_maintenance_work_order_delete_post
+        """Delete a maintenance work order
 
         Delete a Maintenance Work Order by unique identifier: - `id` OR `external_id` - `match: unique` or omit (only unique is supported) 
 
@@ -83,7 +83,7 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_delete_post_serialize(
+        _param = self._delete_maintenance_work_order_serialize(
             maintenance_work_order=maintenance_work_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -93,12 +93,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MaintenanceWorkOrder]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -113,7 +113,7 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_delete_post_with_http_info(
+    def delete_maintenance_work_order_with_http_info(
         self,
         maintenance_work_order: MaintenanceWorkOrder,
         _request_timeout: Union[
@@ -129,7 +129,7 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MaintenanceWorkOrder]]:
-        """v2_maintenance_work_order_delete_post
+        """Delete a maintenance work order
 
         Delete a Maintenance Work Order by unique identifier: - `id` OR `external_id` - `match: unique` or omit (only unique is supported) 
 
@@ -157,7 +157,7 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_delete_post_serialize(
+        _param = self._delete_maintenance_work_order_serialize(
             maintenance_work_order=maintenance_work_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -167,12 +167,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MaintenanceWorkOrder]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -187,7 +187,7 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_delete_post_without_preload_content(
+    def delete_maintenance_work_order_without_preload_content(
         self,
         maintenance_work_order: MaintenanceWorkOrder,
         _request_timeout: Union[
@@ -203,7 +203,7 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_maintenance_work_order_delete_post
+        """Delete a maintenance work order
 
         Delete a Maintenance Work Order by unique identifier: - `id` OR `external_id` - `match: unique` or omit (only unique is supported) 
 
@@ -231,7 +231,7 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_delete_post_serialize(
+        _param = self._delete_maintenance_work_order_serialize(
             maintenance_work_order=maintenance_work_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -241,12 +241,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MaintenanceWorkOrder]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -256,7 +256,7 @@ class MaintenanceWorkOrdersApi:
         return response_data.response
 
 
-    def _v2_maintenance_work_order_delete_post_serialize(
+    def _delete_maintenance_work_order_serialize(
         self,
         maintenance_work_order,
         _request_auth,
@@ -334,9 +334,9 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_search_post(
+    def search_maintenance_work_orders(
         self,
-        v2_maintenance_work_order_search_post_request: V2MaintenanceWorkOrderSearchPostRequest,
+        search_maintenance_work_orders_request: SearchMaintenanceWorkOrdersRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -350,12 +350,12 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[MaintenanceWorkOrder]:
-        """v2_maintenance_work_order_search_post
+        """Search maintenance work orders
 
         Search for Maintenance Work Orders by: - `id` - `external_id` - `line_id` with required `start_time` and `end_time` filters 
 
-        :param v2_maintenance_work_order_search_post_request: (required)
-        :type v2_maintenance_work_order_search_post_request: V2MaintenanceWorkOrderSearchPostRequest
+        :param search_maintenance_work_orders_request: (required)
+        :type search_maintenance_work_orders_request: SearchMaintenanceWorkOrdersRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -378,8 +378,8 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_search_post_serialize(
-            v2_maintenance_work_order_search_post_request=v2_maintenance_work_order_search_post_request,
+        _param = self._search_maintenance_work_orders_serialize(
+            search_maintenance_work_orders_request=search_maintenance_work_orders_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -388,12 +388,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MaintenanceWorkOrder]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -408,9 +408,9 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_search_post_with_http_info(
+    def search_maintenance_work_orders_with_http_info(
         self,
-        v2_maintenance_work_order_search_post_request: V2MaintenanceWorkOrderSearchPostRequest,
+        search_maintenance_work_orders_request: SearchMaintenanceWorkOrdersRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -424,12 +424,12 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[MaintenanceWorkOrder]]:
-        """v2_maintenance_work_order_search_post
+        """Search maintenance work orders
 
         Search for Maintenance Work Orders by: - `id` - `external_id` - `line_id` with required `start_time` and `end_time` filters 
 
-        :param v2_maintenance_work_order_search_post_request: (required)
-        :type v2_maintenance_work_order_search_post_request: V2MaintenanceWorkOrderSearchPostRequest
+        :param search_maintenance_work_orders_request: (required)
+        :type search_maintenance_work_orders_request: SearchMaintenanceWorkOrdersRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -452,8 +452,8 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_search_post_serialize(
-            v2_maintenance_work_order_search_post_request=v2_maintenance_work_order_search_post_request,
+        _param = self._search_maintenance_work_orders_serialize(
+            search_maintenance_work_orders_request=search_maintenance_work_orders_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -462,12 +462,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MaintenanceWorkOrder]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -482,9 +482,9 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_search_post_without_preload_content(
+    def search_maintenance_work_orders_without_preload_content(
         self,
-        v2_maintenance_work_order_search_post_request: V2MaintenanceWorkOrderSearchPostRequest,
+        search_maintenance_work_orders_request: SearchMaintenanceWorkOrdersRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -498,12 +498,12 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_maintenance_work_order_search_post
+        """Search maintenance work orders
 
         Search for Maintenance Work Orders by: - `id` - `external_id` - `line_id` with required `start_time` and `end_time` filters 
 
-        :param v2_maintenance_work_order_search_post_request: (required)
-        :type v2_maintenance_work_order_search_post_request: V2MaintenanceWorkOrderSearchPostRequest
+        :param search_maintenance_work_orders_request: (required)
+        :type search_maintenance_work_orders_request: SearchMaintenanceWorkOrdersRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -526,8 +526,8 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_search_post_serialize(
-            v2_maintenance_work_order_search_post_request=v2_maintenance_work_order_search_post_request,
+        _param = self._search_maintenance_work_orders_serialize(
+            search_maintenance_work_orders_request=search_maintenance_work_orders_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -536,12 +536,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[MaintenanceWorkOrder]",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -551,9 +551,9 @@ class MaintenanceWorkOrdersApi:
         return response_data.response
 
 
-    def _v2_maintenance_work_order_search_post_serialize(
+    def _search_maintenance_work_orders_serialize(
         self,
-        v2_maintenance_work_order_search_post_request,
+        search_maintenance_work_orders_request,
         _request_auth,
         _content_type,
         _headers,
@@ -579,8 +579,8 @@ class MaintenanceWorkOrdersApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if v2_maintenance_work_order_search_post_request is not None:
-            _body_params = v2_maintenance_work_order_search_post_request
+        if search_maintenance_work_orders_request is not None:
+            _body_params = search_maintenance_work_orders_request
 
 
         # set the HTTP header `Accept`
@@ -629,7 +629,7 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_set_post(
+    def set_maintenance_work_order(
         self,
         maintenance_work_order: MaintenanceWorkOrder,
         _request_timeout: Union[
@@ -645,7 +645,7 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MaintenanceWorkOrder:
-        """v2_maintenance_work_order_set_post
+        """Create or update a maintenance work order
 
         Create or update a Maintenance Work Order.  To **create** a new Maintenance Work Order: - Include `name` and `line`, `external_id`, `started_at` (required) - Omit `id` field - include `completed_at`, `description`, `metadata`  To **update** an existing Maintenance Work Order: - Include the `id` of the existing work order - Include any fields to update  NOTE: Any fields not included in an update request will be left unchanged. 
 
@@ -673,7 +673,7 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_set_post_serialize(
+        _param = self._set_maintenance_work_order_serialize(
             maintenance_work_order=maintenance_work_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -683,12 +683,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MaintenanceWorkOrder",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -703,7 +703,7 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_set_post_with_http_info(
+    def set_maintenance_work_order_with_http_info(
         self,
         maintenance_work_order: MaintenanceWorkOrder,
         _request_timeout: Union[
@@ -719,7 +719,7 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MaintenanceWorkOrder]:
-        """v2_maintenance_work_order_set_post
+        """Create or update a maintenance work order
 
         Create or update a Maintenance Work Order.  To **create** a new Maintenance Work Order: - Include `name` and `line`, `external_id`, `started_at` (required) - Omit `id` field - include `completed_at`, `description`, `metadata`  To **update** an existing Maintenance Work Order: - Include the `id` of the existing work order - Include any fields to update  NOTE: Any fields not included in an update request will be left unchanged. 
 
@@ -747,7 +747,7 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_set_post_serialize(
+        _param = self._set_maintenance_work_order_serialize(
             maintenance_work_order=maintenance_work_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -757,12 +757,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MaintenanceWorkOrder",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -777,7 +777,7 @@ class MaintenanceWorkOrdersApi:
 
 
     @validate_call
-    def v2_maintenance_work_order_set_post_without_preload_content(
+    def set_maintenance_work_order_without_preload_content(
         self,
         maintenance_work_order: MaintenanceWorkOrder,
         _request_timeout: Union[
@@ -793,7 +793,7 @@ class MaintenanceWorkOrdersApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_maintenance_work_order_set_post
+        """Create or update a maintenance work order
 
         Create or update a Maintenance Work Order.  To **create** a new Maintenance Work Order: - Include `name` and `line`, `external_id`, `started_at` (required) - Omit `id` field - include `completed_at`, `description`, `metadata`  To **update** an existing Maintenance Work Order: - Include the `id` of the existing work order - Include any fields to update  NOTE: Any fields not included in an update request will be left unchanged. 
 
@@ -821,7 +821,7 @@ class MaintenanceWorkOrdersApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_maintenance_work_order_set_post_serialize(
+        _param = self._set_maintenance_work_order_serialize(
             maintenance_work_order=maintenance_work_order,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -831,12 +831,12 @@ class MaintenanceWorkOrdersApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "MaintenanceWorkOrder",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '401': "GenericError",
             '403': "GenericError",
             '404': "GenericError",
-            '409': "V2LineSearchPost409Response",
-            '500': "V2LineSearchPost500Response",
+            '409': "SearchLines409Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -846,7 +846,7 @@ class MaintenanceWorkOrdersApi:
         return response_data.response
 
 
-    def _v2_maintenance_work_order_set_post_serialize(
+    def _set_maintenance_work_order_serialize(
         self,
         maintenance_work_order,
         _request_auth,

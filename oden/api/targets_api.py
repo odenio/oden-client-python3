@@ -38,7 +38,7 @@ class TargetsApi:
 
 
     @validate_call
-    def v2_target_search_post(
+    def search_targets(
         self,
         target: Target,
         _request_timeout: Union[
@@ -54,7 +54,7 @@ class TargetsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Target]:
-        """v2_target_search_post
+        """Search metric targets
 
         Search for a Target by `line`, `metric_group`, and `product`. For each of these inputs, any of their unique indentifiers (as described in their `search` endpoint) may be used. See examples. 
 
@@ -82,7 +82,7 @@ class TargetsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_target_search_post_serialize(
+        _param = self._search_targets_serialize(
             target=target,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -92,12 +92,12 @@ class TargetsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Target]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -112,7 +112,7 @@ class TargetsApi:
 
 
     @validate_call
-    def v2_target_search_post_with_http_info(
+    def search_targets_with_http_info(
         self,
         target: Target,
         _request_timeout: Union[
@@ -128,7 +128,7 @@ class TargetsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Target]]:
-        """v2_target_search_post
+        """Search metric targets
 
         Search for a Target by `line`, `metric_group`, and `product`. For each of these inputs, any of their unique indentifiers (as described in their `search` endpoint) may be used. See examples. 
 
@@ -156,7 +156,7 @@ class TargetsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_target_search_post_serialize(
+        _param = self._search_targets_serialize(
             target=target,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -166,12 +166,12 @@ class TargetsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Target]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -186,7 +186,7 @@ class TargetsApi:
 
 
     @validate_call
-    def v2_target_search_post_without_preload_content(
+    def search_targets_without_preload_content(
         self,
         target: Target,
         _request_timeout: Union[
@@ -202,7 +202,7 @@ class TargetsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_target_search_post
+        """Search metric targets
 
         Search for a Target by `line`, `metric_group`, and `product`. For each of these inputs, any of their unique indentifiers (as described in their `search` endpoint) may be used. See examples. 
 
@@ -230,7 +230,7 @@ class TargetsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_target_search_post_serialize(
+        _param = self._search_targets_serialize(
             target=target,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -240,12 +240,12 @@ class TargetsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Target]",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -255,7 +255,7 @@ class TargetsApi:
         return response_data.response
 
 
-    def _v2_target_search_post_serialize(
+    def _search_targets_serialize(
         self,
         target,
         _request_auth,
@@ -333,7 +333,7 @@ class TargetsApi:
 
 
     @validate_call
-    def v2_target_set_post(
+    def set_target(
         self,
         target: Target,
         _request_timeout: Union[
@@ -349,7 +349,7 @@ class TargetsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Target:
-        """v2_target_set_post
+        """Create or update a metric target
 
         Create or update a Target.  First the endpoint will search for a Target by `metric_group`, `product`, and `line`: - If the target does not exist a new target is created. - If the product or its mapping to the given line does not exist, they will be created. - If a target exists but with different parameters, it will be updated. - If the target exists with all the same parameters nothing is done. 
 
@@ -377,7 +377,7 @@ class TargetsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_target_set_post_serialize(
+        _param = self._set_target_serialize(
             target=target,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -387,12 +387,12 @@ class TargetsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Target",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -407,7 +407,7 @@ class TargetsApi:
 
 
     @validate_call
-    def v2_target_set_post_with_http_info(
+    def set_target_with_http_info(
         self,
         target: Target,
         _request_timeout: Union[
@@ -423,7 +423,7 @@ class TargetsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Target]:
-        """v2_target_set_post
+        """Create or update a metric target
 
         Create or update a Target.  First the endpoint will search for a Target by `metric_group`, `product`, and `line`: - If the target does not exist a new target is created. - If the product or its mapping to the given line does not exist, they will be created. - If a target exists but with different parameters, it will be updated. - If the target exists with all the same parameters nothing is done. 
 
@@ -451,7 +451,7 @@ class TargetsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_target_set_post_serialize(
+        _param = self._set_target_serialize(
             target=target,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -461,12 +461,12 @@ class TargetsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Target",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -481,7 +481,7 @@ class TargetsApi:
 
 
     @validate_call
-    def v2_target_set_post_without_preload_content(
+    def set_target_without_preload_content(
         self,
         target: Target,
         _request_timeout: Union[
@@ -497,7 +497,7 @@ class TargetsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_target_set_post
+        """Create or update a metric target
 
         Create or update a Target.  First the endpoint will search for a Target by `metric_group`, `product`, and `line`: - If the target does not exist a new target is created. - If the product or its mapping to the given line does not exist, they will be created. - If a target exists but with different parameters, it will be updated. - If the target exists with all the same parameters nothing is done. 
 
@@ -525,7 +525,7 @@ class TargetsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_target_set_post_serialize(
+        _param = self._set_target_serialize(
             target=target,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -535,12 +535,12 @@ class TargetsApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Target",
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -550,7 +550,7 @@ class TargetsApi:
         return response_data.response
 
 
-    def _v2_target_set_post_serialize(
+    def _set_target_serialize(
         self,
         target,
         _request_auth,

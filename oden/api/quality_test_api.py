@@ -16,9 +16,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from oden.models.bulk_delete_quality_tests_request import BulkDeleteQualityTestsRequest
 from oden.models.quality_schema import QualitySchema
 from oden.models.quality_test import QualityTest
-from oden.models.v2_quality_tests_delete_post_request import V2QualityTestsDeletePostRequest
 
 from oden.api_client import ApiClient, RequestSerialized
 from oden.api_response import ApiResponse
@@ -39,9 +39,9 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_schema_search_post(
+    def bulk_delete_quality_tests(
         self,
-        quality_schema: QualitySchema,
+        bulk_delete_quality_tests_request: BulkDeleteQualityTestsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -55,12 +55,12 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_quality_schema_search_post
+        """Delete multiple quality tests
 
-        Searches for Quality Schema[s] by:  - `factory` 
+        Bulk deletes quality tests, either: - All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time` OR - All quality tests whose `id` is supplied  It will do one or the other, with a bias for `id`'s if both are supplied. 
 
-        :param quality_schema: (required)
-        :type quality_schema: QualitySchema
+        :param bulk_delete_quality_tests_request: (required)
+        :type bulk_delete_quality_tests_request: BulkDeleteQualityTestsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,8 +83,8 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_schema_search_post_serialize(
-            quality_schema=quality_schema,
+        _param = self._bulk_delete_quality_tests_serialize(
+            bulk_delete_quality_tests_request=bulk_delete_quality_tests_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -93,12 +93,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -113,9 +113,9 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_schema_search_post_with_http_info(
+    def bulk_delete_quality_tests_with_http_info(
         self,
-        quality_schema: QualitySchema,
+        bulk_delete_quality_tests_request: BulkDeleteQualityTestsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -129,12 +129,12 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_quality_schema_search_post
+        """Delete multiple quality tests
 
-        Searches for Quality Schema[s] by:  - `factory` 
+        Bulk deletes quality tests, either: - All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time` OR - All quality tests whose `id` is supplied  It will do one or the other, with a bias for `id`'s if both are supplied. 
 
-        :param quality_schema: (required)
-        :type quality_schema: QualitySchema
+        :param bulk_delete_quality_tests_request: (required)
+        :type bulk_delete_quality_tests_request: BulkDeleteQualityTestsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -157,8 +157,8 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_schema_search_post_serialize(
-            quality_schema=quality_schema,
+        _param = self._bulk_delete_quality_tests_serialize(
+            bulk_delete_quality_tests_request=bulk_delete_quality_tests_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -167,12 +167,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -187,9 +187,9 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_schema_search_post_without_preload_content(
+    def bulk_delete_quality_tests_without_preload_content(
         self,
-        quality_schema: QualitySchema,
+        bulk_delete_quality_tests_request: BulkDeleteQualityTestsRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -203,12 +203,12 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_quality_schema_search_post
+        """Delete multiple quality tests
 
-        Searches for Quality Schema[s] by:  - `factory` 
+        Bulk deletes quality tests, either: - All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time` OR - All quality tests whose `id` is supplied  It will do one or the other, with a bias for `id`'s if both are supplied. 
 
-        :param quality_schema: (required)
-        :type quality_schema: QualitySchema
+        :param bulk_delete_quality_tests_request: (required)
+        :type bulk_delete_quality_tests_request: BulkDeleteQualityTestsRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -231,8 +231,8 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_schema_search_post_serialize(
-            quality_schema=quality_schema,
+        _param = self._bulk_delete_quality_tests_serialize(
+            bulk_delete_quality_tests_request=bulk_delete_quality_tests_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -241,12 +241,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -256,9 +256,9 @@ class QualityTestApi:
         return response_data.response
 
 
-    def _v2_quality_schema_search_post_serialize(
+    def _bulk_delete_quality_tests_serialize(
         self,
-        quality_schema,
+        bulk_delete_quality_tests_request,
         _request_auth,
         _content_type,
         _headers,
@@ -284,8 +284,8 @@ class QualityTestApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if quality_schema is not None:
-            _body_params = quality_schema
+        if bulk_delete_quality_tests_request is not None:
+            _body_params = bulk_delete_quality_tests_request
 
 
         # set the HTTP header `Accept`
@@ -317,7 +317,7 @@ class QualityTestApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/v2/quality_schema/search',
+            resource_path='/v2/quality_tests/delete',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -334,7 +334,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_delete_post(
+    def delete_quality_test(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -350,7 +350,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_quality_test_delete_post
+        """Delete a quality test
 
         Searches for uniqueQuality Test by:  - `id`  OR  - `interval` (of type `RUN` or `BATCH`)*  *This only work if there is a single quality test record for the interval. 
 
@@ -378,7 +378,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_delete_post_serialize(
+        _param = self._delete_quality_test_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -388,12 +388,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -408,7 +408,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_delete_post_with_http_info(
+    def delete_quality_test_with_http_info(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -424,7 +424,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_quality_test_delete_post
+        """Delete a quality test
 
         Searches for uniqueQuality Test by:  - `id`  OR  - `interval` (of type `RUN` or `BATCH`)*  *This only work if there is a single quality test record for the interval. 
 
@@ -452,7 +452,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_delete_post_serialize(
+        _param = self._delete_quality_test_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -462,12 +462,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -482,7 +482,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_delete_post_without_preload_content(
+    def delete_quality_test_without_preload_content(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -498,7 +498,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_quality_test_delete_post
+        """Delete a quality test
 
         Searches for uniqueQuality Test by:  - `id`  OR  - `interval` (of type `RUN` or `BATCH`)*  *This only work if there is a single quality test record for the interval. 
 
@@ -526,7 +526,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_delete_post_serialize(
+        _param = self._delete_quality_test_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -536,12 +536,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -551,7 +551,7 @@ class QualityTestApi:
         return response_data.response
 
 
-    def _v2_quality_test_delete_post_serialize(
+    def _delete_quality_test_serialize(
         self,
         quality_test,
         _request_auth,
@@ -629,7 +629,302 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_search_post(
+    def search_quality_schemas(
+        self,
+        quality_schema: QualitySchema,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Search quality schemas for a factory
+
+        Searches for Quality Schema[s] by:  - `factory` 
+
+        :param quality_schema: (required)
+        :type quality_schema: QualitySchema
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_quality_schemas_serialize(
+            quality_schema=quality_schema,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '409': "SearchLines409Response",
+            '401': "GenericError",
+            '403': "GenericError",
+            '500': "SearchLines500Response",
+            '501': "GenericError",
+            '400': "SearchLines400Response",
+            '404': "GenericError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def search_quality_schemas_with_http_info(
+        self,
+        quality_schema: QualitySchema,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Search quality schemas for a factory
+
+        Searches for Quality Schema[s] by:  - `factory` 
+
+        :param quality_schema: (required)
+        :type quality_schema: QualitySchema
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_quality_schemas_serialize(
+            quality_schema=quality_schema,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '409': "SearchLines409Response",
+            '401': "GenericError",
+            '403': "GenericError",
+            '500': "SearchLines500Response",
+            '501': "GenericError",
+            '400': "SearchLines400Response",
+            '404': "GenericError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def search_quality_schemas_without_preload_content(
+        self,
+        quality_schema: QualitySchema,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Search quality schemas for a factory
+
+        Searches for Quality Schema[s] by:  - `factory` 
+
+        :param quality_schema: (required)
+        :type quality_schema: QualitySchema
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._search_quality_schemas_serialize(
+            quality_schema=quality_schema,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '409': "SearchLines409Response",
+            '401': "GenericError",
+            '403': "GenericError",
+            '500': "SearchLines500Response",
+            '501': "GenericError",
+            '400': "SearchLines400Response",
+            '404': "GenericError",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _search_quality_schemas_serialize(
+        self,
+        quality_schema,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if quality_schema is not None:
+            _body_params = quality_schema
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'APIKeyAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/quality_schema/search',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def search_quality_tests(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -645,7 +940,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_quality_test_search_post
+        """Search quality tests
 
         Searches for Quality Test[s] by:  - `id`  OR  - `interval` (of type `RUN` or `BATCH`) 
 
@@ -673,7 +968,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_search_post_serialize(
+        _param = self._search_quality_tests_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -683,12 +978,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -703,7 +998,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_search_post_with_http_info(
+    def search_quality_tests_with_http_info(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -719,7 +1014,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_quality_test_search_post
+        """Search quality tests
 
         Searches for Quality Test[s] by:  - `id`  OR  - `interval` (of type `RUN` or `BATCH`) 
 
@@ -747,7 +1042,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_search_post_serialize(
+        _param = self._search_quality_tests_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -757,12 +1052,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -777,7 +1072,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_search_post_without_preload_content(
+    def search_quality_tests_without_preload_content(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -793,7 +1088,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_quality_test_search_post
+        """Search quality tests
 
         Searches for Quality Test[s] by:  - `id`  OR  - `interval` (of type `RUN` or `BATCH`) 
 
@@ -821,7 +1116,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_search_post_serialize(
+        _param = self._search_quality_tests_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -831,12 +1126,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -846,7 +1141,7 @@ class QualityTestApi:
         return response_data.response
 
 
-    def _v2_quality_test_search_post_serialize(
+    def _search_quality_tests_serialize(
         self,
         quality_test,
         _request_auth,
@@ -924,7 +1219,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_set_post(
+    def set_quality_test(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -940,7 +1235,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """v2_quality_test_set_post
+        """Create or update a quality test result
 
         Create or update a Quality Test record: - To update `id` must be supplied. Only the supplied fields will be updated, the rest will remain unchanged. - If `id` is not supplied, a new `quality_test_record` will be created. 
 
@@ -968,7 +1263,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_set_post_serialize(
+        _param = self._set_quality_test_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -978,12 +1273,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -998,7 +1293,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_set_post_with_http_info(
+    def set_quality_test_with_http_info(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -1014,7 +1309,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """v2_quality_test_set_post
+        """Create or update a quality test result
 
         Create or update a Quality Test record: - To update `id` must be supplied. Only the supplied fields will be updated, the rest will remain unchanged. - If `id` is not supplied, a new `quality_test_record` will be created. 
 
@@ -1042,7 +1337,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_set_post_serialize(
+        _param = self._set_quality_test_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1052,12 +1347,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -1072,7 +1367,7 @@ class QualityTestApi:
 
 
     @validate_call
-    def v2_quality_test_set_post_without_preload_content(
+    def set_quality_test_without_preload_content(
         self,
         quality_test: QualityTest,
         _request_timeout: Union[
@@ -1088,7 +1383,7 @@ class QualityTestApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v2_quality_test_set_post
+        """Create or update a quality test result
 
         Create or update a Quality Test record: - To update `id` must be supplied. Only the supplied fields will be updated, the rest will remain unchanged. - If `id` is not supplied, a new `quality_test_record` will be created. 
 
@@ -1116,7 +1411,7 @@ class QualityTestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._v2_quality_test_set_post_serialize(
+        _param = self._set_quality_test_serialize(
             quality_test=quality_test,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1126,12 +1421,12 @@ class QualityTestApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '409': "V2LineSearchPost409Response",
+            '409': "SearchLines409Response",
             '401': "GenericError",
             '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
+            '500': "SearchLines500Response",
             '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
+            '400': "SearchLines400Response",
             '404': "GenericError",
         }
         response_data = self.api_client.call_api(
@@ -1141,7 +1436,7 @@ class QualityTestApi:
         return response_data.response
 
 
-    def _v2_quality_test_set_post_serialize(
+    def _set_quality_test_serialize(
         self,
         quality_test,
         _request_auth,
@@ -1203,301 +1498,6 @@ class QualityTestApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/quality_test/set',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v2_quality_tests_delete_post(
-        self,
-        v2_quality_tests_delete_post_request: V2QualityTestsDeletePostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> None:
-        """v2_quality_tests_delete_post
-
-        Bulk deletes quality tests, either: - All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time` OR - All quality tests whose `id` is supplied  It will do one or the other, with a bias for `id`'s if both are supplied. 
-
-        :param v2_quality_tests_delete_post_request: (required)
-        :type v2_quality_tests_delete_post_request: V2QualityTestsDeletePostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v2_quality_tests_delete_post_serialize(
-            v2_quality_tests_delete_post_request=v2_quality_tests_delete_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '409': "V2LineSearchPost409Response",
-            '401': "GenericError",
-            '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
-            '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
-            '404': "GenericError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v2_quality_tests_delete_post_with_http_info(
-        self,
-        v2_quality_tests_delete_post_request: V2QualityTestsDeletePostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[None]:
-        """v2_quality_tests_delete_post
-
-        Bulk deletes quality tests, either: - All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time` OR - All quality tests whose `id` is supplied  It will do one or the other, with a bias for `id`'s if both are supplied. 
-
-        :param v2_quality_tests_delete_post_request: (required)
-        :type v2_quality_tests_delete_post_request: V2QualityTestsDeletePostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v2_quality_tests_delete_post_serialize(
-            v2_quality_tests_delete_post_request=v2_quality_tests_delete_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '409': "V2LineSearchPost409Response",
-            '401': "GenericError",
-            '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
-            '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
-            '404': "GenericError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v2_quality_tests_delete_post_without_preload_content(
-        self,
-        v2_quality_tests_delete_post_request: V2QualityTestsDeletePostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v2_quality_tests_delete_post
-
-        Bulk deletes quality tests, either: - All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time` OR - All quality tests whose `id` is supplied  It will do one or the other, with a bias for `id`'s if both are supplied. 
-
-        :param v2_quality_tests_delete_post_request: (required)
-        :type v2_quality_tests_delete_post_request: V2QualityTestsDeletePostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v2_quality_tests_delete_post_serialize(
-            v2_quality_tests_delete_post_request=v2_quality_tests_delete_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': None,
-            '409': "V2LineSearchPost409Response",
-            '401': "GenericError",
-            '403': "GenericError",
-            '500': "V2LineSearchPost500Response",
-            '501': "GenericError",
-            '400': "V2LineSearchPost400Response",
-            '404': "GenericError",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v2_quality_tests_delete_post_serialize(
-        self,
-        v2_quality_tests_delete_post_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if v2_quality_tests_delete_post_request is not None:
-            _body_params = v2_quality_tests_delete_post_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'APIKeyAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v2/quality_tests/delete',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -4,19 +4,24 @@ All URIs are relative to *https://api.oden.app*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v2_quality_schema_search_post**](QualityTestApi.md#v2_quality_schema_search_post) | **POST** /v2/quality_schema/search | 
-[**v2_quality_test_delete_post**](QualityTestApi.md#v2_quality_test_delete_post) | **POST** /v2/quality_test/delete | 
-[**v2_quality_test_search_post**](QualityTestApi.md#v2_quality_test_search_post) | **POST** /v2/quality_test/search | 
-[**v2_quality_test_set_post**](QualityTestApi.md#v2_quality_test_set_post) | **POST** /v2/quality_test/set | 
-[**v2_quality_tests_delete_post**](QualityTestApi.md#v2_quality_tests_delete_post) | **POST** /v2/quality_tests/delete | 
+[**bulk_delete_quality_tests**](QualityTestApi.md#bulk_delete_quality_tests) | **POST** /v2/quality_tests/delete | Delete multiple quality tests
+[**delete_quality_test**](QualityTestApi.md#delete_quality_test) | **POST** /v2/quality_test/delete | Delete a quality test
+[**search_quality_schemas**](QualityTestApi.md#search_quality_schemas) | **POST** /v2/quality_schema/search | Search quality schemas for a factory
+[**search_quality_tests**](QualityTestApi.md#search_quality_tests) | **POST** /v2/quality_test/search | Search quality tests
+[**set_quality_test**](QualityTestApi.md#set_quality_test) | **POST** /v2/quality_test/set | Create or update a quality test result
 
 
-# **v2_quality_schema_search_post**
-> v2_quality_schema_search_post(quality_schema)
+# **bulk_delete_quality_tests**
+> bulk_delete_quality_tests(bulk_delete_quality_tests_request)
 
-Searches for Quality Schema[s] by:
+Delete multiple quality tests
 
-- `factory`
+Bulk deletes quality tests, either:
+- All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time`
+OR
+- All quality tests whose `id` is supplied
+
+It will do one or the other, with a bias for `id`'s if both are supplied.
 
 
 ### Example
@@ -25,7 +30,7 @@ Searches for Quality Schema[s] by:
 
 ```python
 import oden
-from oden.models.quality_schema import QualitySchema
+from oden.models.bulk_delete_quality_tests_request import BulkDeleteQualityTestsRequest
 from oden.rest import ApiException
 from pprint import pprint
 
@@ -50,12 +55,13 @@ configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
 with oden.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = oden.QualityTestApi(api_client)
-    quality_schema = {"factory":{"name":"Factory A"}} # QualitySchema | 
+    bulk_delete_quality_tests_request = oden.BulkDeleteQualityTestsRequest() # BulkDeleteQualityTestsRequest | 
 
     try:
-        api_instance.v2_quality_schema_search_post(quality_schema)
+        # Delete multiple quality tests
+        api_instance.bulk_delete_quality_tests(bulk_delete_quality_tests_request)
     except Exception as e:
-        print("Exception when calling QualityTestApi->v2_quality_schema_search_post: %s\n" % e)
+        print("Exception when calling QualityTestApi->bulk_delete_quality_tests: %s\n" % e)
 ```
 
 
@@ -65,7 +71,7 @@ with oden.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **quality_schema** | [**QualitySchema**](QualitySchema.md)|  | 
+ **bulk_delete_quality_tests_request** | [**BulkDeleteQualityTestsRequest**](BulkDeleteQualityTestsRequest.md)|  | 
 
 ### Return type
 
@@ -95,8 +101,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_quality_test_delete_post**
-> v2_quality_test_delete_post(quality_test)
+# **delete_quality_test**
+> delete_quality_test(quality_test)
+
+Delete a quality test
 
 Searches for uniqueQuality Test by:
 
@@ -143,9 +151,10 @@ with oden.ApiClient(configuration) as api_client:
     quality_test = {"id":"16a8fa1f-ba0a-4040-81c9-ac4dd054bdbb","match":"unique"} # QualityTest | 
 
     try:
-        api_instance.v2_quality_test_delete_post(quality_test)
+        # Delete a quality test
+        api_instance.delete_quality_test(quality_test)
     except Exception as e:
-        print("Exception when calling QualityTestApi->v2_quality_test_delete_post: %s\n" % e)
+        print("Exception when calling QualityTestApi->delete_quality_test: %s\n" % e)
 ```
 
 
@@ -185,8 +194,97 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_quality_test_search_post**
-> v2_quality_test_search_post(quality_test)
+# **search_quality_schemas**
+> search_quality_schemas(quality_schema)
+
+Search quality schemas for a factory
+
+Searches for Quality Schema[s] by:
+
+- `factory`
+
+
+### Example
+
+* Api Key Authentication (APIKeyAuth):
+
+```python
+import oden
+from oden.models.quality_schema import QualitySchema
+from oden.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.oden.app
+# See configuration.py for a list of all supported configuration parameters.
+configuration = oden.Configuration(
+    host = "https://api.oden.app"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: APIKeyAuth
+configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with oden.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = oden.QualityTestApi(api_client)
+    quality_schema = {"factory":{"name":"Factory A"}} # QualitySchema | 
+
+    try:
+        # Search quality schemas for a factory
+        api_instance.search_quality_schemas(quality_schema)
+    except Exception as e:
+        print("Exception when calling QualityTestApi->search_quality_schemas: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **quality_schema** | [**QualitySchema**](QualitySchema.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response |  -  |
+**409** | A {match: \&quot;unique\&quot;} was requested, but multiple entities matched the search parameters.  |  -  |
+**401** | User has provided either no credentials or invalid credentials |  -  |
+**403** | User has provided valid credentials but is not authorized to access the entity  |  -  |
+**500** | An internal server error has occurred. If reporting the error to Oden, include the ID returned in this response to aid in debugging.  |  -  |
+**501** | Endpoint is not yet implemented |  -  |
+**400** | An error occurred regarding one of the input parameters |  -  |
+**404** | Entity not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_quality_tests**
+> search_quality_tests(quality_test)
+
+Search quality tests
 
 Searches for Quality Test[s] by:
 
@@ -231,9 +329,10 @@ with oden.ApiClient(configuration) as api_client:
     quality_test = {"id":"16a8fa1f-ba0a-4040-81c9-ac4dd054bdbb","match":"unique"} # QualityTest | 
 
     try:
-        api_instance.v2_quality_test_search_post(quality_test)
+        # Search quality tests
+        api_instance.search_quality_tests(quality_test)
     except Exception as e:
-        print("Exception when calling QualityTestApi->v2_quality_test_search_post: %s\n" % e)
+        print("Exception when calling QualityTestApi->search_quality_tests: %s\n" % e)
 ```
 
 
@@ -273,8 +372,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v2_quality_test_set_post**
-> v2_quality_test_set_post(quality_test)
+# **set_quality_test**
+> set_quality_test(quality_test)
+
+Create or update a quality test result
 
 Create or update a Quality Test record:
 - To update `id` must be supplied. Only the supplied fields will be updated, the rest will remain unchanged.
@@ -315,9 +416,10 @@ with oden.ApiClient(configuration) as api_client:
     quality_test = {"interval":{"id":"178a61c0f00","line":{"factory":{"id":"e32d004e-ce8b-40bf-bbc1-14fd907d2f47"},"name":"Line 01"},"type":{"id":"e07da9a8-f2fd-480c-a315-d4c84fcac08c","name":"BATCH"}},"quality_schema":{"id":"66"},"raw_data":{"fdr":"test string 3","impedance":6.789,"test_length":10,"test_rl":"test string"},"timestamp":"2022-02-18T16:28:04Z"} # QualityTest | 
 
     try:
-        api_instance.v2_quality_test_set_post(quality_test)
+        # Create or update a quality test result
+        api_instance.set_quality_test(quality_test)
     except Exception as e:
-        print("Exception when calling QualityTestApi->v2_quality_test_set_post: %s\n" % e)
+        print("Exception when calling QualityTestApi->set_quality_test: %s\n" % e)
 ```
 
 
@@ -328,93 +430,6 @@ with oden.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **quality_test** | [**QualityTest**](QualityTest.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful response |  -  |
-**409** | A {match: \&quot;unique\&quot;} was requested, but multiple entities matched the search parameters.  |  -  |
-**401** | User has provided either no credentials or invalid credentials |  -  |
-**403** | User has provided valid credentials but is not authorized to access the entity  |  -  |
-**500** | An internal server error has occurred. If reporting the error to Oden, include the ID returned in this response to aid in debugging.  |  -  |
-**501** | Endpoint is not yet implemented |  -  |
-**400** | An error occurred regarding one of the input parameters |  -  |
-**404** | Entity not found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v2_quality_tests_delete_post**
-> v2_quality_tests_delete_post(v2_quality_tests_delete_post_request)
-
-Bulk deletes quality tests, either:
-- All quality tests on a given `line` whose `timsetamp` is between `start_time` and `end_time`
-OR
-- All quality tests whose `id` is supplied
-
-It will do one or the other, with a bias for `id`'s if both are supplied.
-
-
-### Example
-
-* Api Key Authentication (APIKeyAuth):
-
-```python
-import oden
-from oden.models.v2_quality_tests_delete_post_request import V2QualityTestsDeletePostRequest
-from oden.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.oden.app
-# See configuration.py for a list of all supported configuration parameters.
-configuration = oden.Configuration(
-    host = "https://api.oden.app"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: APIKeyAuth
-configuration.api_key['APIKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['APIKeyAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with oden.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = oden.QualityTestApi(api_client)
-    v2_quality_tests_delete_post_request = oden.V2QualityTestsDeletePostRequest() # V2QualityTestsDeletePostRequest | 
-
-    try:
-        api_instance.v2_quality_tests_delete_post(v2_quality_tests_delete_post_request)
-    except Exception as e:
-        print("Exception when calling QualityTestApi->v2_quality_tests_delete_post: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **v2_quality_tests_delete_post_request** | [**V2QualityTestsDeletePostRequest**](V2QualityTestsDeletePostRequest.md)|  | 
 
 ### Return type
 
