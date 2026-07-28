@@ -30,7 +30,7 @@ class RunMetadata(BaseModel):
     """
     Metadata associated with a run interval
     """ # noqa: E501
-    metadata_type: Optional[StrictStr] = None
+    metadata_type: StrictStr
     product: Optional[Product] = None
     target: Optional[Target] = None
     additional_properties: Dict[str, Any] = {}
@@ -39,9 +39,6 @@ class RunMetadata(BaseModel):
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['run']):
             raise ValueError("must be one of enum values ('run')")
         return value

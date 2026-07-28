@@ -30,7 +30,7 @@ class StateMetadata(BaseModel):
     """
     Metadata associated with a state interval
     """ # noqa: E501
-    metadata_type: Optional[StrictStr] = None
+    metadata_type: StrictStr
     reason: Optional[StateReason] = None
     comment: Optional[StrictStr] = None
     category: Optional[StateCategory] = None
@@ -40,9 +40,6 @@ class StateMetadata(BaseModel):
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['state']):
             raise ValueError("must be one of enum values ('state')")
         return value

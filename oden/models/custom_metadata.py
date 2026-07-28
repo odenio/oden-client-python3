@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,16 +28,13 @@ class CustomMetadata(BaseModel):
     """
     Metadata associated with a custom interval type
     """ # noqa: E501
-    metadata_type: Optional[StrictStr] = None
+    metadata_type: StrictStr
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["metadata_type"]
 
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['custom']):
             raise ValueError("must be one of enum values ('custom')")
         return value

@@ -28,7 +28,7 @@ class BatchMetadata(BaseModel):
     """
     Metadata associated with a batch interval
     """ # noqa: E501
-    metadata_type: Optional[StrictStr] = None
+    metadata_type: StrictStr
     run: Optional[Interval] = None
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["metadata_type", "run"]
@@ -36,9 +36,6 @@ class BatchMetadata(BaseModel):
     @field_validator('metadata_type')
     def metadata_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in set(['batch']):
             raise ValueError("must be one of enum values ('batch')")
         return value

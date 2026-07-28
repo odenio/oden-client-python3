@@ -6,7 +6,7 @@ Metadata associated with a run interval
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata_type** | **str** |  | [optional] [readonly] 
+**metadata_type** | **str** |  | [readonly] 
 **product** | [**Product**](Product.md) |  | [optional] 
 **target** | [**Target**](Target.md) |  | [optional] 
 
