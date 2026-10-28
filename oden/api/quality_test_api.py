@@ -97,7 +97,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -171,7 +170,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -245,7 +243,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -392,7 +389,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -466,7 +462,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -540,7 +535,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -687,7 +681,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -761,7 +754,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -835,7 +827,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -982,7 +973,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -1056,7 +1046,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -1130,7 +1119,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -1277,7 +1265,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -1351,7 +1338,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -1425,7 +1411,6 @@ class QualityTestApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }

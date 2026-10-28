@@ -27,15 +27,17 @@ class TestTargetsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_target_search_post(self) -> None:
-        """Test case for v2_target_search_post
+    def test_search_targets(self) -> None:
+        """Test case for search_targets
 
+        Search metric targets
         """
         pass
 
-    def test_v2_target_set_post(self) -> None:
-        """Test case for v2_target_set_post
+    def test_set_target(self) -> None:
+        """Test case for set_target
 
+        Create or update a metric target
         """
         pass
 

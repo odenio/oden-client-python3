@@ -27,15 +27,17 @@ class TestMachineGroupsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_factory_search_post(self) -> None:
-        """Test case for v2_factory_search_post
+    def test_search_factories(self) -> None:
+        """Test case for search_factories
 
+        Search factories
         """
         pass
 
-    def test_v2_line_search_post(self) -> None:
-        """Test case for v2_line_search_post
+    def test_search_lines(self) -> None:
+        """Test case for search_lines
 
+        Search production lines
         """
         pass
 

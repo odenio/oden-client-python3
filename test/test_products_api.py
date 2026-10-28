@@ -27,21 +27,24 @@ class TestProductsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_product_delete_post(self) -> None:
-        """Test case for v2_product_delete_post
+    def test_delete_product(self) -> None:
+        """Test case for delete_product
 
+        Delete a product
         """
         pass
 
-    def test_v2_product_search_post(self) -> None:
-        """Test case for v2_product_search_post
+    def test_search_products(self) -> None:
+        """Test case for search_products
 
+        Search products
         """
         pass
 
-    def test_v2_product_set_post(self) -> None:
-        """Test case for v2_product_set_post
+    def test_set_product(self) -> None:
+        """Test case for set_product
 
+        Create or update a product
         """
         pass
 

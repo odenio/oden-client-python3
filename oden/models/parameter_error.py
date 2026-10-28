@@ -18,23 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
-from oden.models.interval import Interval
-from oden.models.v2_intervals_update_post200_response_failed_intervals_inner import V2IntervalsUpdatePost200ResponseFailedIntervalsInner
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class V2IntervalsUpdatePost200Response(BaseModel):
+class ParameterError(BaseModel):
     """
-    V2IntervalsUpdatePost200Response
+    ParameterError
     """ # noqa: E501
-    num_updated: Optional[StrictInt] = None
-    updated_intervals: Optional[List[Interval]] = None
-    num_failed: Optional[StrictInt] = None
-    failed_intervals: Optional[List[V2IntervalsUpdatePost200ResponseFailedIntervalsInner]] = None
-    __properties: ClassVar[List[str]] = ["num_updated", "updated_intervals", "num_failed", "failed_intervals"]
+    error: StrictStr
+    name: StrictStr
+    retryable: StrictBool
+    __properties: ClassVar[List[str]] = ["error", "name", "retryable"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -54,7 +51,7 @@ class V2IntervalsUpdatePost200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200Response from a JSON string"""
+        """Create an instance of ParameterError from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,25 +72,11 @@ class V2IntervalsUpdatePost200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in updated_intervals (list)
-        _items = []
-        if self.updated_intervals:
-            for _item_updated_intervals in self.updated_intervals:
-                if _item_updated_intervals:
-                    _items.append(_item_updated_intervals.to_dict())
-            _dict['updated_intervals'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in failed_intervals (list)
-        _items = []
-        if self.failed_intervals:
-            for _item_failed_intervals in self.failed_intervals:
-                if _item_failed_intervals:
-                    _items.append(_item_failed_intervals.to_dict())
-            _dict['failed_intervals'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V2IntervalsUpdatePost200Response from a dict"""
+        """Create an instance of ParameterError from a dict"""
         if obj is None:
             return None
 
@@ -101,10 +84,9 @@ class V2IntervalsUpdatePost200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "num_updated": obj.get("num_updated"),
-            "updated_intervals": [Interval.from_dict(_item) for _item in obj["updated_intervals"]] if obj.get("updated_intervals") is not None else None,
-            "num_failed": obj.get("num_failed"),
-            "failed_intervals": [V2IntervalsUpdatePost200ResponseFailedIntervalsInner.from_dict(_item) for _item in obj["failed_intervals"]] if obj.get("failed_intervals") is not None else None
+            "error": obj.get("error"),
+            "name": obj.get("name"),
+            "retryable": obj.get("retryable")
         })
         return _obj
 

@@ -27,21 +27,24 @@ class TestMaintenanceWorkOrdersApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_maintenance_work_order_delete_post(self) -> None:
-        """Test case for v2_maintenance_work_order_delete_post
+    def test_delete_maintenance_work_order(self) -> None:
+        """Test case for delete_maintenance_work_order
 
+        Delete a maintenance work order
         """
         pass
 
-    def test_v2_maintenance_work_order_search_post(self) -> None:
-        """Test case for v2_maintenance_work_order_search_post
+    def test_search_maintenance_work_orders(self) -> None:
+        """Test case for search_maintenance_work_orders
 
+        Search maintenance work orders
         """
         pass
 
-    def test_v2_maintenance_work_order_set_post(self) -> None:
-        """Test case for v2_maintenance_work_order_set_post
+    def test_set_maintenance_work_order(self) -> None:
+        """Test case for set_maintenance_work_order
 
+        Create or update a maintenance work order
         """
         pass
 

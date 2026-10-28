@@ -72,6 +72,7 @@ __all__ = [
     "Match",
     "MetricGroup",
     "OQLQuery",
+    "ParameterError",
     "Product",
     "ProductAttribute",
     "ProductMapping",
@@ -158,6 +159,7 @@ from oden.models.maintenance_work_order import MaintenanceWorkOrder as Maintenan
 from oden.models.match import Match as Match
 from oden.models.metric_group import MetricGroup as MetricGroup
 from oden.models.oql_query import OQLQuery as OQLQuery
+from oden.models.parameter_error import ParameterError as ParameterError
 from oden.models.product import Product as Product
 from oden.models.product_attribute import ProductAttribute as ProductAttribute
 from oden.models.product_mapping import ProductMapping as ProductMapping

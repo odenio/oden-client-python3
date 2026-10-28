@@ -264,6 +264,7 @@ Class | Method | HTTP request | Description
  - [Match](docs/Match.md)
  - [MetricGroup](docs/MetricGroup.md)
  - [OQLQuery](docs/OQLQuery.md)
+ - [ParameterError](docs/ParameterError.md)
  - [Product](docs/Product.md)
  - [ProductAttribute](docs/ProductAttribute.md)
  - [ProductMapping](docs/ProductMapping.md)

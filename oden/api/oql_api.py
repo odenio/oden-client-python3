@@ -105,7 +105,6 @@ class OQLApi:
             '409': "SearchLines409Response",
             '429': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -184,7 +183,6 @@ class OQLApi:
             '409': "SearchLines409Response",
             '429': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -263,7 +261,6 @@ class OQLApi:
             '409': "SearchLines409Response",
             '429': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,

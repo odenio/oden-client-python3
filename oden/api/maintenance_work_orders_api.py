@@ -99,7 +99,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -173,7 +172,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -247,7 +245,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -394,7 +391,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -468,7 +464,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -542,7 +537,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -689,7 +683,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -763,7 +756,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -837,7 +829,6 @@ class MaintenanceWorkOrdersApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,

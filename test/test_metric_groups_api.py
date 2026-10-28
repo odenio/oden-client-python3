@@ -27,9 +27,10 @@ class TestMetricGroupsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_metric_group_search_post(self) -> None:
-        """Test case for v2_metric_group_search_post
+    def test_search_metric_groups(self) -> None:
+        """Test case for search_metric_groups
 
+        Search metric groups
         """
         pass
 

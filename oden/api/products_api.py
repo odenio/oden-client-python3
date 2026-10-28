@@ -95,7 +95,6 @@ class ProductsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -168,7 +167,6 @@ class ProductsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -241,7 +239,6 @@ class ProductsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -388,7 +385,6 @@ class ProductsApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -461,7 +457,6 @@ class ProductsApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -534,7 +529,6 @@ class ProductsApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -679,7 +673,6 @@ class ProductsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -751,7 +744,6 @@ class ProductsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -823,7 +815,6 @@ class ProductsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(

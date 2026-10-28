@@ -27,15 +27,17 @@ class TestProductMappingsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_product_mapping_search_post(self) -> None:
-        """Test case for v2_product_mapping_search_post
+    def test_search_product_mappings(self) -> None:
+        """Test case for search_product_mappings
 
+        Search product-to-line mappings
         """
         pass
 
-    def test_v2_product_mapping_set_post(self) -> None:
-        """Test case for v2_product_mapping_set_post
+    def test_set_product_mapping(self) -> None:
+        """Test case for set_product_mapping
 
+        Map a product to a line
         """
         pass
 

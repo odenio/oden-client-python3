@@ -95,7 +95,6 @@ class ProductMappingsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -167,7 +166,6 @@ class ProductMappingsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -239,7 +237,6 @@ class ProductMappingsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
         }
         response_data = self.api_client.call_api(
@@ -384,7 +381,6 @@ class ProductMappingsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -457,7 +453,6 @@ class ProductMappingsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -530,7 +525,6 @@ class ProductMappingsApi:
             '409': "SearchLines409Response",
             '401': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }

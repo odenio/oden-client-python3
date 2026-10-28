@@ -45,6 +45,7 @@ from oden.models.maintenance_work_order import MaintenanceWorkOrder
 from oden.models.match import Match
 from oden.models.metric_group import MetricGroup
 from oden.models.oql_query import OQLQuery
+from oden.models.parameter_error import ParameterError
 from oden.models.product import Product
 from oden.models.product_attribute import ProductAttribute
 from oden.models.product_mapping import ProductMapping

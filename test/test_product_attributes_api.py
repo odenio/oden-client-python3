@@ -27,15 +27,17 @@ class TestProductAttributesApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_product_attribute_search_post(self) -> None:
-        """Test case for v2_product_attribute_search_post
+    def test_search_product_attributes(self) -> None:
+        """Test case for search_product_attributes
 
+        Search product attributes
         """
         pass
 
-    def test_v2_product_attribute_set_post(self) -> None:
-        """Test case for v2_product_attribute_set_post
+    def test_set_product_attribute(self) -> None:
+        """Test case for set_product_attribute
 
+        Create or update a product attribute
         """
         pass
 

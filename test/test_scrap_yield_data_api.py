@@ -27,21 +27,24 @@ class TestScrapYieldDataApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_scrap_yield_delete_post(self) -> None:
-        """Test case for v2_scrap_yield_delete_post
+    def test_delete_scrap_yield(self) -> None:
+        """Test case for delete_scrap_yield
 
+        Delete a scrap/yield record
         """
         pass
 
-    def test_v2_scrap_yield_search_post(self) -> None:
-        """Test case for v2_scrap_yield_search_post
+    def test_search_scrap_yield(self) -> None:
+        """Test case for search_scrap_yield
 
+        Search scrap/yield records
         """
         pass
 
-    def test_v2_scrap_yield_set_post(self) -> None:
-        """Test case for v2_scrap_yield_set_post
+    def test_set_scrap_yield(self) -> None:
+        """Test case for set_scrap_yield
 
+        Create or update a scrap/yield record
         """
         pass
 

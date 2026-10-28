@@ -97,7 +97,6 @@ class MachineGroupsApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -171,7 +170,6 @@ class MachineGroupsApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -245,7 +243,6 @@ class MachineGroupsApi:
             '401': "GenericError",
             '403': "GenericError",
             '500': "SearchLines500Response",
-            '501': "GenericError",
             '400': "SearchLines400Response",
             '404': "GenericError",
         }
@@ -394,7 +391,6 @@ class MachineGroupsApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -468,7 +464,6 @@ class MachineGroupsApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -542,7 +537,6 @@ class MachineGroupsApi:
             '404': "GenericError",
             '409': "SearchLines409Response",
             '500': "SearchLines500Response",
-            '501': "GenericError",
         }
         response_data = self.api_client.call_api(
             *_param,

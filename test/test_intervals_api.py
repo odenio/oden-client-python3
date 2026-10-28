@@ -27,51 +27,73 @@ class TestIntervalsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v2_interval_delete_post(self) -> None:
-        """Test case for v2_interval_delete_post
+    def test_bulk_delete_intervals(self) -> None:
+        """Test case for bulk_delete_intervals
 
+        Delete intervals in a time range
         """
         pass
 
-    def test_v2_interval_search_post(self) -> None:
-        """Test case for v2_interval_search_post
+    def test_bulk_set_intervals(self) -> None:
+        """Test case for bulk_set_intervals
 
+        Create a set of intervals
         """
         pass
 
-    def test_v2_interval_set_post(self) -> None:
-        """Test case for v2_interval_set_post
+    def test_bulk_update_intervals(self) -> None:
+        """Test case for bulk_update_intervals
 
+        Update a set of intervals
         """
         pass
 
-    def test_v2_interval_type_search_post(self) -> None:
-        """Test case for v2_interval_type_search_post
+    def test_delete_interval(self) -> None:
+        """Test case for delete_interval
 
+        Delete an interval
         """
         pass
 
-    def test_v2_interval_update_post(self) -> None:
-        """Test case for v2_interval_update_post
+    def test_delete_interval_type(self) -> None:
+        """Test case for delete_interval_type
 
+        Delete a custom interval type
         """
         pass
 
-    def test_v2_intervals_delete_post(self) -> None:
-        """Test case for v2_intervals_delete_post
+    def test_search_interval_types(self) -> None:
+        """Test case for search_interval_types
 
+        Search interval types
         """
         pass
 
-    def test_v2_intervals_set_post(self) -> None:
-        """Test case for v2_intervals_set_post
+    def test_search_intervals(self) -> None:
+        """Test case for search_intervals
 
+        Search intervals on a line
         """
         pass
 
-    def test_v2_intervals_update_post(self) -> None:
-        """Test case for v2_intervals_update_post
+    def test_set_interval(self) -> None:
+        """Test case for set_interval
 
+        Create or update an interval
+        """
+        pass
+
+    def test_set_interval_type(self) -> None:
+        """Test case for set_interval_type
+
+        Create or update a custom interval type
+        """
+        pass
+
+    def test_update_interval(self) -> None:
+        """Test case for update_interval
+
+        Update an interval
         """
         pass
 
